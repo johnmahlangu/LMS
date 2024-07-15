@@ -44,4 +44,10 @@ public class StudentManager
     {
         studentDAO.deleteFromStudents(studentId);
     }
+    
+    public List<Student> searchStudent(String keyword)
+    {
+        List<Student> searchResult = studentDAO.searchStudents(keyword);
+        return searchResult;
+    }
 }

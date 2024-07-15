@@ -15,5 +15,5 @@ public interface StudentRepository
     void addToStudents(Student user);
     void updateStudents(int userID, Student updateUser);
     void deleteFromStudents(int userID);
-    void searchStudents(String keyword);
+    List<Student> searchStudents(String keyword);
 }
