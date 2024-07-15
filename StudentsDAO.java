@@ -173,7 +173,7 @@ public class StudentsDAO implements StudentRepository
         }
     }
     @Override
-    public void searchStudents(String keyword)
+    public List<Student> searchStudents(String keyword)
     {
         List<Student> searchResult = new ArrayList<>();
         String query = "SELECT * FROM students WHERE student_id LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR email LIKE ?";
@@ -212,5 +212,6 @@ public class StudentsDAO implements StudentRepository
         catch (SQLException e) {
             e.printStackTrace();
         }
+        return searchResult;
     }   
 }
