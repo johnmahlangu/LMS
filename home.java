@@ -34,11 +34,17 @@ public class home extends javax.swing.JFrame
         initComponents();
         btnDeleteBook.setEnabled(false);
         btnUpdateBook.setEnabled(false);
-        loadBooks();
+        loadBooksIntoTableBooks();
+        loadBooksIntoTableIssueBooks();
         loadStudents();
         tableBooks.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 tableBooksMouseClicked(evt);
+            }
+        });
+        tableIssueBooks.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                tableIssueBookMouseClicked(evt);
             }
         });
         tableStudents.addMouseListener(new MouseAdapter() {
@@ -112,6 +118,10 @@ public class home extends javax.swing.JFrame
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableIssueBooks = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,6 +145,11 @@ public class home extends javax.swing.JFrame
 
         btnIssueBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnIssueBook.setText("Issue Book");
+        btnIssueBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIssueBookActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setText("Return Book");
@@ -309,28 +324,26 @@ public class home extends javax.swing.JFrame
                             .addComponent(jLabel6)
                             .addComponent(jLabel5))
                         .addGap(99, 99, 99)
-                        .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBookId, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPublicationYear, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtBookId, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(txtPublicationYear, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(txtPublisher, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(txtAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(txtTitle))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
                     .addGroup(ManageBooksPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 97, Short.MAX_VALUE)
                         .addComponent(txtSearchBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearchBooks)
                         .addGap(18, 18, 18)
-                        .addComponent(btnViewAllBooks)))
+                        .addComponent(btnViewAllBooks))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
 
         ManageBooksPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClearBook, btnDeleteBook, btnSaveBook, btnUpdateBook});
-
-        ManageBooksPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtISBN, txtTitle});
 
         ManageBooksPanelLayout.setVerticalGroup(
             ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -482,39 +495,36 @@ public class home extends javax.swing.JFrame
         ManageStudentsPanelLayout.setHorizontalGroup(
             ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
                 .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
+                    .addComponent(txtStudentId, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ManageStudentsPanelLayout.createSequentialGroup()
+                        .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnDeleteStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSaveStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                         .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(65, 65, 65)
-                        .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
-                                .addComponent(btnSaveStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                                .addComponent(btnUpdateStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
-                                .addComponent(btnDeleteStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnClearStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtStudentId))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE))
-                    .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnViewAllStudents)
-                        .addGap(15, 15, 15)))
-                .addContainerGap())
+                            .addComponent(btnUpdateStudent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClearStudent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtLastName)
+                    .addComponent(txtEmail)
+                    .addComponent(txtFirstName))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnViewAllStudents)
+                .addGap(21, 21, 21))
         );
 
         ManageStudentsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4});
@@ -549,7 +559,7 @@ public class home extends javax.swing.JFrame
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSaveStudent)
+                            .addComponent(btnSaveStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnUpdateStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(37, 37, 37)
                         .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -580,46 +590,95 @@ public class home extends javax.swing.JFrame
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Due Date:");
 
+        tableIssueBooks.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "BookID", "Title", "Author", "Publisher", "Publication Year", "ISBN"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tableIssueBooks);
+        if (tableIssueBooks.getColumnModel().getColumnCount() > 0) {
+            tableIssueBooks.getColumnModel().getColumn(0).setResizable(false);
+            tableIssueBooks.getColumnModel().getColumn(1).setResizable(false);
+            tableIssueBooks.getColumnModel().getColumn(2).setResizable(false);
+            tableIssueBooks.getColumnModel().getColumn(3).setResizable(false);
+            tableIssueBooks.getColumnModel().getColumn(4).setResizable(false);
+            tableIssueBooks.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        jButton3.setText("Clear");
+
+        jButton4.setText("Issue Book");
+
         javax.swing.GroupLayout IssueBookPanelLayout = new javax.swing.GroupLayout(IssueBookPanel);
         IssueBookPanel.setLayout(IssueBookPanelLayout);
         IssueBookPanelLayout.setHorizontalGroup(
             IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(70, 70, 70)
                 .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(jLabel13)
                     .addComponent(jLabel12)
                     .addComponent(jLabel11))
                 .addGap(65, 65, 65)
-                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField4))
-                .addContainerGap(654, Short.MAX_VALUE))
+                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        IssueBookPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, jButton4});
+
         IssueBookPanelLayout.setVerticalGroup(
             IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(IssueBookPanelLayout.createSequentialGroup()
                 .addGap(104, 104, 104)
-                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        IssueBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton3, jButton4});
 
         Parent.add(IssueBookPanel, "card4");
 
@@ -670,7 +729,7 @@ public class home extends javax.swing.JFrame
     }//GEN-LAST:event_btnSearchBooksActionPerformed
 
     private void btnViewAllBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllBooksActionPerformed
-        loadBooks();
+        loadBooksIntoTableBooks();
     }//GEN-LAST:event_btnViewAllBooksActionPerformed
 
     private void btnUpdateStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStudentActionPerformed
@@ -692,6 +751,10 @@ public class home extends javax.swing.JFrame
     private void btnViewAllStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllStudentsActionPerformed
         loadStudents();
     }//GEN-LAST:event_btnViewAllStudentsActionPerformed
+
+    private void btnIssueBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueBookActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIssueBookActionPerformed
     
     private Student getStudentDetails() {
         String firstName = txtFirstName.getText().trim();
@@ -789,7 +852,7 @@ public class home extends javax.swing.JFrame
         DefaultTableModel model = (DefaultTableModel) tableStudents.getModel();
         
         if (searchResult.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No student(s) with search criteria found");
+            JOptionPane.showMessageDialog(this, "No student(s) with search criteria found.");
         }
         else {
             model.setRowCount(0);
@@ -809,7 +872,7 @@ public class home extends javax.swing.JFrame
             }
             
             bookMan.addNewBook(newBook.getAuthor(), newBook.getTitle(), newBook.getPublisher(), newBook.getPublicationYear(), newBook.getISBN());            
-            loadBooks();          
+            loadBooksIntoTableBooks();          
             clearBookDetails();            
             JOptionPane.showMessageDialog(this, "Book added successfully.");
         } catch (Exception e) {
@@ -822,9 +885,8 @@ public class home extends javax.swing.JFrame
             Book updatedBook = getBookDetails();
             int bookId = Integer.parseInt(txtBookId.getText());
             
-            bookMan.bookUpdate(bookId, updatedBook);
-            
-            loadBooks();
+            bookMan.bookUpdate(bookId, updatedBook);           
+            loadBooksIntoTableBooks();
             clearBookDetails();
             btnSaveBook.setEnabled(true);           
             JOptionPane.showMessageDialog(this, "Book updated successfully.");
@@ -842,7 +904,7 @@ public class home extends javax.swing.JFrame
             studentMan.studentUpdate(studentId, updatedStudent);            
             loadStudents();
             clearStudentDetails();
-            JOptionPane.showMessageDialog(this, "Student updated successfully");
+            JOptionPane.showMessageDialog(this, "Student updated successfully.");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -873,7 +935,7 @@ public class home extends javax.swing.JFrame
             
             if (dialogResult == JOptionPane.YES_OPTION) {
                 bookMan.deleteBook(bookId);    
-                loadBooks();
+                loadBooksIntoTableBooks();
                 clearBookDetails();
                 btnSaveBook.setEnabled(true);                
                 JOptionPane.showMessageDialog(this, "Book deleted successfully.");
@@ -901,13 +963,22 @@ public class home extends javax.swing.JFrame
             e.printStackTrace();
         }
     }
-        
-    private void loadBooks() 
+    
+    private void loadBooksIntoTableIssueBooks() {
+        DefaultTableModel model = (DefaultTableModel) tableIssueBooks.getModel();
+        loadBooksIntoTable(model);
+    }
+    
+    private void loadBooksIntoTableBooks() {
+        DefaultTableModel model = (DefaultTableModel) tableBooks.getModel();
+        loadBooksIntoTable(model);
+    }
+    
+    private void loadBooksIntoTable(DefaultTableModel model) 
     {
         try {
             List<Book> books = bookMan.displayAllBooks();
-            
-            DefaultTableModel model = (DefaultTableModel) tableBooks.getModel();
+               
             model.setRowCount(0);
             
             for (Book book : books) {
@@ -935,10 +1006,8 @@ public class home extends javax.swing.JFrame
             }           
     }
     
-    private void tableBooksMouseClicked(MouseEvent evt) {
-        int selectedRow = tableBooks.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tableBooks.getModel();
-        
+    private void tableMouseClicked(DefaultTableModel model, int selectedRow) 
+    {       
         txtBookId.setText(model.getValueAt(selectedRow, 0).toString());
         txtTitle.setText(model.getValueAt(selectedRow, 1).toString());
         txtAuthor.setText(model.getValueAt(selectedRow, 2).toString());
@@ -947,9 +1016,22 @@ public class home extends javax.swing.JFrame
         txtISBN.setText(model.getValueAt(selectedRow, 5).toString());
         btnSaveBook.setEnabled(false);
         btnDeleteBook.setEnabled(true);
-        btnUpdateBook.setEnabled(true);
-        
+        btnUpdateBook.setEnabled(true);        
     }
+    
+    private void tableBooksMouseClicked(MouseEvent evt) 
+    {
+        int selectedRow = tableBooks.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tableBooks.getModel();
+        tableMouseClicked(model, selectedRow);
+    }
+    
+    private void tableIssueBookMouseClicked(MouseEvent evt) {
+        int selectedRow = tableIssueBooks.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tableIssueBooks.getModel();
+        tableMouseClicked(model, selectedRow);
+    }
+    
     
     private void tableStudentsMouseClicked(MouseEvent evt) {
         int selectedRow = tableStudents.getSelectedRow();
@@ -1020,6 +1102,8 @@ public class home extends javax.swing.JFrame
     private javax.swing.JButton btnViewAllBooks;
     private javax.swing.JButton btnViewAllStudents;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1037,11 +1121,13 @@ public class home extends javax.swing.JFrame
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tableBooks;
+    private javax.swing.JTable tableIssueBooks;
     private javax.swing.JTable tableStudents;
     private javax.swing.JTextField txtAuthor;
     private javax.swing.JTextField txtBookId;
