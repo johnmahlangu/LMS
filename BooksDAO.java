@@ -181,17 +181,17 @@ public class BooksDAO implements BookRepository
      @Override
     public List<Book> searchBooks(String keyword)
     {
-        Connection connection = ConnectionDB.getInstance().getConnection();
         
         List<Book> searchResult = new ArrayList<>();
+        String query = "SELECT * FROM books WHERE book_id LIKE ? OR title LIKE ? OR author LIKE ? OR publisher LIKE ? OR publication_year LIKE ? OR ISBN LIKE ?";
         
-        try (PreparedStatement st = connection.prepareStatement("SELECT * FROM books WHERE book_id LIKE ? OR title LIKE ? OR author LIKE ? OR publisher LIKE ? OR publication_year LIKE ? OR ISBN LIKE ?"))
+        try (PreparedStatement ps = connection.prepareStatement(query))
         {
             for (int i = 1; i <= 6; i++) {
-                st.setString(i, "%" + keyword + "%");
+                ps.setString(i, "%" + keyword + "%");
             }
             
-            try(ResultSet rs = st.executeQuery())
+            try(ResultSet rs = ps.executeQuery())
             {
                 while (rs.next())
                 {

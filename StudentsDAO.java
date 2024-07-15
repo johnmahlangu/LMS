@@ -176,22 +176,26 @@ public class StudentsDAO implements StudentRepository
     public void searchStudents(String keyword)
     {
         List<Student> searchResult = new ArrayList<>();
-        String query = "SELECT * FROM students WHERE first_name LIKE ? OR last_name LIKE ?";
+        String query = "SELECT * FROM students WHERE student_id LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR email LIKE ?";
         
         try (PreparedStatement ps = connection.prepareStatement(query))
         {
-            ps.setString(1, "%" + keyword + "%");
-            ps.setString(2, "%" + keyword + "%");
+           for (int i = 1; i <= 4; i++) {
+               ps.setString(i, "%" + keyword + "%");
+           }
             
             try (ResultSet rs = ps.executeQuery())
             {
                 while (rs.next())
                 {
-                    Student user = new Student();
-                    user.setFirstName(rs.getString("first_name"));
-                    user.setLastName(rs.getString("last_name"));
+                    Student student = new Student();
                     
-                    searchResult.add(user);
+                    student.setStudentId(rs.getInt("student_id"));
+                    student.setFirstName(rs.getString("first_name"));
+                    student.setLastName(rs.getString("last_name"));
+                    student.setEmail(rs.getString("email"));
+                    
+                    searchResult.add(student);
                 }
             }
             if (searchResult.isEmpty()) {
