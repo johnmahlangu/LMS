@@ -35,6 +35,23 @@ public class StudentsDAO implements StudentRepository
         return false;
     }
     @Override
+    public boolean studentExistsByStudentId(int studentId)
+    {
+        String query = "SELECT COUNT (*) FROM students WHERE student_id = ?";
+        
+        try (PreparedStatement ps = connection.prepareStatement(query)){
+            ps.setInt(1, studentId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    @Override
     public List<Student> readStudents()
     {        
         List<Student> students = new ArrayList<>();

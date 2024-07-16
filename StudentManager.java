@@ -22,6 +22,11 @@ public class StudentManager
     {
         return studentDAO.studentExistsByEmail(email);
     }
+    
+    public boolean studentExistsByStudentId(int studentId)
+    {
+        return studentDAO.studentExistsByStudentId(studentId);
+    }
 
     public void addStudent(String firstName, String lastName, String email)
     {
