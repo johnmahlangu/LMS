@@ -15,7 +15,7 @@ public class Student
     private String lastName;
     private String email;
     private int studentId;
-    private List<BorrowedBook> borrowedBooks;
+    private List<IssueBook> borrowedBooks;
 
     public Student()
     {}
@@ -58,11 +58,11 @@ public class Student
         this.studentId = studentId;
     }   
 
-    public List<BorrowedBook> getBorrowedBooks() {
+    public List<IssueBook> getBorrowedBooks() {
         return borrowedBooks;
     }
 
-    public void setBorrowedBooks(List<BorrowedBook> borrowedBooks) {
+    public void setBorrowedBooks(List<IssueBook> borrowedBooks) {
         this.borrowedBooks = borrowedBooks;
     }
 }
