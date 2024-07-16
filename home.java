@@ -68,10 +68,10 @@ public class home extends javax.swing.JFrame
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnManageBooks = new javax.swing.JButton();
-        btnManageStudents = new javax.swing.JButton();
-        btnIssueBook = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnManageBooksPanel = new javax.swing.JButton();
+        btnManageStudentsPanel = new javax.swing.JButton();
+        btnIssueBookPanel = new javax.swing.JButton();
+        btnReturnBookPanel = new javax.swing.JButton();
         Parent = new javax.swing.JPanel();
         ManageBooksPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -125,7 +125,7 @@ public class home extends javax.swing.JFrame
         jScrollPane3 = new javax.swing.JScrollPane();
         tableIssueBooks = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnIssueBook = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtIssueBookTitle = new javax.swing.JTextField();
@@ -136,31 +136,31 @@ public class home extends javax.swing.JFrame
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 255));
 
-        btnManageBooks.setText("Manage Books");
-        btnManageBooks.addActionListener(new java.awt.event.ActionListener() {
+        btnManageBooksPanel.setText("Manage Books");
+        btnManageBooksPanel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageBooksActionPerformed(evt);
+                btnManageBooksPanelActionPerformed(evt);
             }
         });
 
-        btnManageStudents.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnManageStudents.setText("Manage Students");
-        btnManageStudents.addActionListener(new java.awt.event.ActionListener() {
+        btnManageStudentsPanel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnManageStudentsPanel.setText("Manage Students");
+        btnManageStudentsPanel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageStudentsActionPerformed(evt);
+                btnManageStudentsPanelActionPerformed(evt);
             }
         });
 
-        btnIssueBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnIssueBook.setText("Issue Book");
-        btnIssueBook.addActionListener(new java.awt.event.ActionListener() {
+        btnIssueBookPanel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnIssueBookPanel.setText("Issue Book");
+        btnIssueBookPanel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIssueBookActionPerformed(evt);
+                btnIssueBookPanelActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Return Book");
+        btnReturnBookPanel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnReturnBookPanel.setText("Return Book");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,30 +169,30 @@ public class home extends javax.swing.JFrame
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(btnIssueBook)
-                    .addComponent(btnManageBooks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnManageStudents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnReturnBookPanel)
+                    .addComponent(btnIssueBookPanel)
+                    .addComponent(btnManageBooksPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnManageStudentsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnIssueBook, btnManageBooks, btnManageStudents, jButton1});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnIssueBookPanel, btnManageBooksPanel, btnManageStudentsPanel, btnReturnBookPanel});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(104, 104, 104)
-                .addComponent(btnManageBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageBooksPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(btnManageStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageStudentsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(btnIssueBook)
+                .addComponent(btnIssueBookPanel)
                 .addGap(45, 45, 45)
-                .addComponent(jButton1)
+                .addComponent(btnReturnBookPanel)
                 .addContainerGap(175, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnIssueBook, btnManageBooks, btnManageStudents, jButton1});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnIssueBookPanel, btnManageBooksPanel, btnManageStudentsPanel, btnReturnBookPanel});
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 550));
 
@@ -629,8 +629,18 @@ public class home extends javax.swing.JFrame
         }
 
         jButton3.setText("Clear");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Issue Book");
+        btnIssueBook.setText("Issue Book");
+        btnIssueBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIssueBookActionPerformed(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel15.setText("Title:");
@@ -657,7 +667,7 @@ public class home extends javax.swing.JFrame
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDueDate)
                             .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                                .addComponent(jButton4)
+                                .addComponent(btnIssueBook)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                                 .addComponent(jButton3))
                             .addComponent(txtIssueDate, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -678,7 +688,7 @@ public class home extends javax.swing.JFrame
                 .addContainerGap())
         );
 
-        IssueBookPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, jButton4});
+        IssueBookPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnIssueBook, jButton3});
 
         IssueBookPanelLayout.setVerticalGroup(
             IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -715,12 +725,12 @@ public class home extends javax.swing.JFrame
                             .addComponent(txtDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnIssueBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3))
                         .addGap(28, 28, 28))))
         );
 
-        IssueBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton3, jButton4});
+        IssueBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnIssueBook, jButton3});
 
         Parent.add(IssueBookPanel, "card4");
 
@@ -729,21 +739,21 @@ public class home extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnManageBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBooksActionPerformed
+    private void btnManageBooksPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBooksPanelActionPerformed
         // TODO add your handling code here:
         Parent.removeAll();
         Parent.add(ManageBooksPanel);
         Parent.repaint();
         Parent.revalidate();
-    }//GEN-LAST:event_btnManageBooksActionPerformed
+    }//GEN-LAST:event_btnManageBooksPanelActionPerformed
 
-    private void btnManageStudentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageStudentsActionPerformed
+    private void btnManageStudentsPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageStudentsPanelActionPerformed
      
         Parent.removeAll();
         Parent.add(ManageStudentsPanel);
         Parent.repaint();
         Parent.revalidate();
-    }//GEN-LAST:event_btnManageStudentsActionPerformed
+    }//GEN-LAST:event_btnManageStudentsPanelActionPerformed
 
     private void btnSaveBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveBookActionPerformed
         saveBook();
@@ -794,12 +804,25 @@ public class home extends javax.swing.JFrame
         loadStudents();
     }//GEN-LAST:event_btnViewAllStudentsActionPerformed
 
-    private void btnIssueBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueBookActionPerformed
+    private void btnIssueBookPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueBookPanelActionPerformed
         Parent.removeAll();
         Parent.add(IssueBookPanel);
         Parent.repaint();
         Parent.revalidate();
+    }//GEN-LAST:event_btnIssueBookPanelActionPerformed
+
+    private void btnIssueBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueBookActionPerformed
+        issueBook();
     }//GEN-LAST:event_btnIssueBookActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        txtIssueToStudentId.setText("");
+        txtIssueBookId.setText("");
+        txtIssueDate.setText("");
+        txtDueDate.setText("");
+        txtIssueBookTitle.setText("");
+        txtIssueBookAuthor.setText("");
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     private Student getStudentDetails() {
         String firstName = txtFirstName.getText().trim();
@@ -879,8 +902,7 @@ public class home extends javax.swing.JFrame
         LocalDate issueDate; 
         LocalDate dueDate;
            
-        try {
-            
+        try {           
             issueDate = LocalDate.parse(txtIssueDate.getText()); 
             dueDate = LocalDate.parse(txtDueDate.getText());
     
@@ -888,24 +910,25 @@ public class home extends javax.swing.JFrame
             JOptionPane.showMessageDialog(this, "Please enter valid date.", "Error", JOptionPane.ERROR_MESSAGE);
             return null;
         } 
-        return new IssueBook(studentId, bookId, issueDate, dueDate);
+        return new IssueBook(bookId, studentId, issueDate, dueDate);
     }
     
-    private void IssueBook() 
-    {
-        try {
-            IssueBook issueBook = getIssueBookDetails();
-            Student student = new Student();
-            
-            if (studentMan.studentExistsByStudentId(student.getStudentId())) {
-               issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssued_date(), issueBook.getReturn_date());
-               JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
-            }
+    private void issueBook() {
+    try {
+        IssueBook issueBook = getIssueBookDetails();
+        
+            if ( studentMan.studentExistsByStudentId(issueBook.getStudentId())){
+                System.out.println("Student and book exist, issuing book...");
+                issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssued_date(), issueBook.getReturn_date());
+                JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
+            } 
             else {
-                JOptionPane.showMessageDialog(this, "Student ID does not exist.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+                System.out.println("student ID does not exist.");
+                JOptionPane.showMessageDialog(this, "student ID does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+        } 
+        catch (Exception e) {
+            e.printStackTrace();            
         }
     }
     
@@ -1114,7 +1137,8 @@ public class home extends javax.swing.JFrame
       
         txtIssueBookId.setText(model.getValueAt(selectedRow, 0).toString());
         txtIssueBookTitle.setText(model.getValueAt(selectedRow, 1).toString());
-        txtIssueBookAuthor.setText(model.getValueAt(selectedRow, 2).toString());        
+        txtIssueBookAuthor.setText(model.getValueAt(selectedRow, 2).toString());  
+        txtIssueDate.setText(LocalDate.now().toString());
     }
     
     private void tableStudentsMouseClicked(MouseEvent evt) {
@@ -1175,8 +1199,10 @@ public class home extends javax.swing.JFrame
     private javax.swing.JButton btnDeleteBook;
     private javax.swing.JButton btnDeleteStudent;
     private javax.swing.JButton btnIssueBook;
-    private javax.swing.JButton btnManageBooks;
-    private javax.swing.JButton btnManageStudents;
+    private javax.swing.JButton btnIssueBookPanel;
+    private javax.swing.JButton btnManageBooksPanel;
+    private javax.swing.JButton btnManageStudentsPanel;
+    private javax.swing.JButton btnReturnBookPanel;
     private javax.swing.JButton btnSaveBook;
     private javax.swing.JButton btnSaveStudent;
     private javax.swing.JButton btnSearchBooks;
@@ -1185,9 +1211,7 @@ public class home extends javax.swing.JFrame
     private javax.swing.JButton btnUpdateStudent;
     private javax.swing.JButton btnViewAllBooks;
     private javax.swing.JButton btnViewAllStudents;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

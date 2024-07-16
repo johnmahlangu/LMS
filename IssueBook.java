@@ -32,7 +32,7 @@ public class IssueBook
         return bookId;
     }
     
-    public void setBookId(int book) 
+    public void setBookId(int bookId) 
     {
         this.bookId = bookId;
     }

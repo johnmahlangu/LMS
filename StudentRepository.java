@@ -11,8 +11,8 @@ import java.util.*;
 public interface StudentRepository 
 {   
     List<Student> readStudents();
-    public boolean studentExistsByEmail(String email);
-    public boolean studentExistsByStudentId(int studentId);
+    boolean studentExistsByEmail(String email);
+    boolean studentExistsByStudentId(int studentId);
     void addToStudents(Student user);
     void updateStudents(int userID, Student updateUser);
     void deleteFromStudents(int userID);

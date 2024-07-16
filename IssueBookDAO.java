@@ -17,7 +17,7 @@ public class IssueBookDAO implements IssueBookRepository
     public IssueBookDAO() {
         connection = ConnectionDB.getInstance().getConnection();
     }
-    
+     
     @Override
     public void addToBorrowedBooks(IssueBook issueBook)
     {        
@@ -36,9 +36,12 @@ public class IssueBookDAO implements IssueBookRepository
         }
         catch(SQLException e)
         {
-            System.err.println("Error issuing book: " + e.getMessage());
+            System.out.println("Error issuing book: " + e.getMessage());
+            e.printStackTrace();
         }
+        System.out.println("add to borrowed books run");
     }
+   
     @Override
     public void deleteFromBorrowedBooks(int issuedID)
     {        

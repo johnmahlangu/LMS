@@ -35,7 +35,8 @@ public class BooksDAO implements BookRepository
         }
         return false;
     }
-     @Override
+    
+    @Override
     public List<Book> readFromBooks()
     {   
         List<Book> books = new ArrayList<>();
@@ -86,7 +87,6 @@ public class BooksDAO implements BookRepository
             System.err.println("Error adding book: " + e);
         }
     }
-
     @Override
     public void updateBooks(int bookId, Book book) 
     {                 

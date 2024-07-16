@@ -37,7 +37,7 @@ public class StudentsDAO implements StudentRepository
     @Override
     public boolean studentExistsByStudentId(int studentId)
     {
-        String query = "SELECT COUNT (*) FROM students WHERE student_id = ?";
+        String query = "SELECT COUNT(*) FROM students WHERE student_id = ?";
         
         try (PreparedStatement ps = connection.prepareStatement(query)){
             ps.setInt(1, studentId);
@@ -71,17 +71,7 @@ public class StudentsDAO implements StudentRepository
                 student.setEmail(rs.getString("email"));
                 
                 students.add(student);
-            }
-            if (students.isEmpty()) {
-                System.out.println("No users found");
-            }
-            else {               
-                System.out.println("List of Users:");
-                
-                for (Student stnt: students) {
-                    System.out.println(stnt);
-                }
-            }                   
+            }                  
         }
         catch (SQLException e) {
             e.printStackTrace();          

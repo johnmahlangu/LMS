@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class BookManager 
 {
-    private BooksDAO bookDAO;
+    private final BooksDAO bookDAO;
     
     public BookManager(BooksDAO bookDAO) {
         this.bookDAO = bookDAO;
