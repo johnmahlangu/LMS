@@ -10,7 +10,7 @@ import java.sql.*;
  *
  * @author Thokozani Mahlangu
  */
-public class IssueBookDAO implements IssuedBookRepo 
+public class IssueBookDAO implements IssueBookRepository 
 {
     private Connection connection;
     
@@ -19,16 +19,16 @@ public class IssueBookDAO implements IssuedBookRepo
     }
     
     @Override
-    public void addToBorrowedBooks(BorrowedBook borrowedBook)
+    public void addToBorrowedBooks(IssueBook issueBook)
     {        
         String sql = "INSERT INTO borrowed_books (book_id, student_id, borrow_date, return_date) VALUES(?,?,?,?)";
         
         try (PreparedStatement ps = connection.prepareStatement(sql))
         {          
-            ps.setInt(1, borrowedBook.getBookId());
-            ps.setInt(2, borrowedBook.getStudentId());
-            ps.setDate(3, Date.valueOf(borrowedBook.getIssued_date()));
-            ps.setDate(4, Date.valueOf(borrowedBook.getReturn_date()));
+            ps.setInt(1, issueBook.getBookId());
+            ps.setInt(2, issueBook.getStudentId());
+            ps.setDate(3, Date.valueOf(issueBook.getIssued_date()));
+            ps.setDate(4, Date.valueOf(issueBook.getReturn_date()));
                   
             ps.executeUpdate();
             

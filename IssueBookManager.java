@@ -11,25 +11,25 @@ import java.time.LocalDate;
  */
 public class IssueBookManager 
 {
-    private IssuedBookDAO issuedBookDAO;
+    private IssueBookDAO issueBookDAO;
 
-    public IssueBookManager(IssuedBookDAO issuedBookDAO) {
-        this.issuedBookDAO = issuedBookDAO;
+    public IssueBookManager(IssueBookDAO issuedBookDAO) {
+        this.issueBookDAO = issuedBookDAO;
     }
     
     public void borrowedBook(int book_id,int user_id, LocalDate issued_date, LocalDate return_date)
     {
-        BorrowedBook issueBook = new BorrowedBook(book_id, user_id, issued_date, return_date);
-        issuedBookDAO.addToBorrowedBooks(issueBook);
+        IssueBook issueBook = new IssueBook(book_id, user_id, issued_date, return_date);
+        issueBookDAO.addToBorrowedBooks(issueBook);
     }
     
     public void returnBookById(int bookID)
     {
-        issuedBookDAO.deleteFromBorrowedBooks(bookID);
+        issueBookDAO.deleteFromBorrowedBooks(bookID);
     }
     
     public void borrowedByStudentId(int studentId)
     {
-        issuedBookDAO.readFromBorrowedBooks(studentId);
+        issueBookDAO.readFromBorrowedBooks(studentId);
     }
 }

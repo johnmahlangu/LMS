@@ -7,9 +7,9 @@ package com.servlet;
  *
  * @author Thokozani Mahlangu
  */
-public interface IssuedBookRepo 
+public interface IssueBookRepository 
 {
-    void addToBorrowedBooks(BorrowedBook borrowedBoo);
+    void addToBorrowedBooks(IssueBook borrowedBoo);
     void deleteFromBorrowedBooks(int issuedID);
     void readFromBorrowedBooks(int userID);
 }

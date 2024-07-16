@@ -9,7 +9,7 @@ import java.time.LocalDate;
  *
  * @author Thokozani Mahlangu
  */
-public class BorrowedBook 
+public class IssueBook 
 {
     private int bookId;
     private int studentId;
@@ -17,17 +17,15 @@ public class BorrowedBook
     private LocalDate return_date;
 
     // Constructors
-    public BorrowedBook() {
+    public IssueBook() {
     }
 
-    public BorrowedBook(int bookId,int studentId, LocalDate issued_date, LocalDate return_date) {
+    public IssueBook(int bookId, int studentId, LocalDate issued_date, LocalDate return_date) {
         this.bookId = bookId;
         this.studentId = studentId;
         this.issued_date = issued_date;
         this.return_date = return_date;
     }
-
-    // Getters and setters
 
     public int getBookId() 
     {
