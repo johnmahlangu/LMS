@@ -10,13 +10,17 @@ import java.sql.*;
  *
  * @author Thokozani Mahlangu
  */
-public class IssuedBookDAO implements IssuedBookRepo 
-{       
+public class IssueBookDAO implements IssuedBookRepo 
+{
+    private Connection connection;
+    
+    public IssueBookDAO() {
+        connection = ConnectionDB.getInstance().getConnection();
+    }
+    
     @Override
     public void addToBorrowedBooks(BorrowedBook borrowedBook)
-    {
-        Connection connection = ConnectionDB.getInstance().getConnection();
-        
+    {        
         String sql = "INSERT INTO borrowed_books (book_id, student_id, borrow_date, return_date) VALUES(?,?,?,?)";
         
         try (PreparedStatement ps = connection.prepareStatement(sql))
@@ -37,9 +41,7 @@ public class IssuedBookDAO implements IssuedBookRepo
     }
     @Override
     public void deleteFromBorrowedBooks(int issuedID)
-    {
-        Connection connection = ConnectionDB.getInstance().getConnection();
-        
+    {        
         String sql = "DELETE FROM borrowed_books WHERE book_id = ?";
         
         try (PreparedStatement ps = connection.prepareStatement(sql))
@@ -62,9 +64,7 @@ public class IssuedBookDAO implements IssuedBookRepo
     
     @Override
     public void readFromBorrowedBooks(int StudentId)
-    {
-        Connection connection = ConnectionDB.getInstance().getConnection();
-        
+    {        
         String sql = "SELECT DISTINCT borrowed_books.*, books.title " +
                      "FROM borrowed_books " +
                      "JOIN books ON borrowed_books.book_id = books.book_id " +
