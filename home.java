@@ -34,8 +34,8 @@ public class home extends javax.swing.JFrame
         initComponents();
         btnDeleteBook.setEnabled(false);
         btnUpdateBook.setEnabled(false);
-        loadBooksIntoTableBooks();
-        loadBooksIntoTableIssueBooks();
+        loadBooksTableBooks();
+        loadBooksTableIssueBooks();
         loadStudents();
         tableBooks.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -44,7 +44,7 @@ public class home extends javax.swing.JFrame
         });
         tableIssueBooks.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                tableIssueBookMouseClicked(evt);
+                tableIssueBooksMouseClicked(evt);
             }
         });
         tableStudents.addMouseListener(new MouseAdapter() {
@@ -114,14 +114,18 @@ public class home extends javax.swing.JFrame
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtIssueDate = new javax.swing.JTextField();
+        txtIssueBookId = new javax.swing.JTextField();
+        txtIssueToStudentId = new javax.swing.JTextField();
+        txtDueDate = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableIssueBooks = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txtIssueBookTitle = new javax.swing.JTextField();
+        txtIssueBookAuthor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -620,27 +624,43 @@ public class home extends javax.swing.JFrame
 
         jButton4.setText("Issue Book");
 
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel15.setText("Title:");
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel16.setText("Author:");
+
         javax.swing.GroupLayout IssueBookPanelLayout = new javax.swing.GroupLayout(IssueBookPanel);
         IssueBookPanel.setLayout(IssueBookPanelLayout);
         IssueBookPanelLayout.setHorizontalGroup(
             IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(76, 76, 76)
                 .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11))
-                .addGap(65, 65, 65)
-                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                        .addComponent(jButton3))
-                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13))
+                        .addGap(61, 61, 61)
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDueDate)
+                            .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                                .addComponent(jButton3))
+                            .addComponent(txtIssueDate, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11))
+                        .addGap(59, 59, 59)
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIssueToStudentId)
+                            .addComponent(txtIssueBookId)
+                            .addComponent(txtIssueBookTitle)
+                            .addComponent(txtIssueBookAuthor))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -653,29 +673,39 @@ public class home extends javax.swing.JFrame
             .addGroup(IssueBookPanelLayout.createSequentialGroup()
                 .addGap(104, 104, 104)
                 .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IssueBookPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())
                     .addGroup(IssueBookPanelLayout.createSequentialGroup()
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
+                            .addComponent(txtIssueToStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(43, 43, 43)
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
+                            .addComponent(txtIssueBookId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addGap(43, 43, 43)
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
+                            .addComponent(jLabel15)
+                            .addComponent(txtIssueBookTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
+                            .addComponent(jLabel16)
+                            .addComponent(txtIssueBookAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtIssueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13))
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel14))
+                            .addComponent(txtDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43)
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addGap(28, 28, 28))))
         );
 
         IssueBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton3, jButton4});
@@ -709,7 +739,7 @@ public class home extends javax.swing.JFrame
 
     private void btnClearBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearBookActionPerformed
            clearBookDetails();
-            btnSaveBook.setEnabled(true);
+           btnSaveBook.setEnabled(true);
     }//GEN-LAST:event_btnClearBookActionPerformed
 
     private void btnUpdateBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateBookActionPerformed
@@ -729,7 +759,7 @@ public class home extends javax.swing.JFrame
     }//GEN-LAST:event_btnSearchBooksActionPerformed
 
     private void btnViewAllBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllBooksActionPerformed
-        loadBooksIntoTableBooks();
+        loadBooksTableBooks();
     }//GEN-LAST:event_btnViewAllBooksActionPerformed
 
     private void btnUpdateStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateStudentActionPerformed
@@ -753,7 +783,10 @@ public class home extends javax.swing.JFrame
     }//GEN-LAST:event_btnViewAllStudentsActionPerformed
 
     private void btnIssueBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueBookActionPerformed
-        // TODO add your handling code here:
+        Parent.removeAll();
+        Parent.add(IssueBookPanel);
+        Parent.repaint();
+        Parent.revalidate();
     }//GEN-LAST:event_btnIssueBookActionPerformed
     
     private Student getStudentDetails() {
@@ -845,6 +878,7 @@ public class home extends javax.swing.JFrame
             }
         }             
     }
+    
     private void searchStudents() {
         String keyword = txtSearchStudent.getText();
         List<Student> searchResult = studentMan.searchStudent(keyword);
@@ -862,6 +896,7 @@ public class home extends javax.swing.JFrame
             }
         }
     }
+    
     private void saveBook() {
         try {
             Book newBook = getBookDetails();
@@ -872,7 +907,7 @@ public class home extends javax.swing.JFrame
             }
             
             bookMan.addNewBook(newBook.getAuthor(), newBook.getTitle(), newBook.getPublisher(), newBook.getPublicationYear(), newBook.getISBN());            
-            loadBooksIntoTableBooks();          
+            loadBooksTableBooks();          
             clearBookDetails();            
             JOptionPane.showMessageDialog(this, "Book added successfully.");
         } catch (Exception e) {
@@ -886,7 +921,7 @@ public class home extends javax.swing.JFrame
             int bookId = Integer.parseInt(txtBookId.getText());
             
             bookMan.bookUpdate(bookId, updatedBook);           
-            loadBooksIntoTableBooks();
+            loadBooksTableBooks();
             clearBookDetails();
             btnSaveBook.setEnabled(true);           
             JOptionPane.showMessageDialog(this, "Book updated successfully.");
@@ -935,7 +970,7 @@ public class home extends javax.swing.JFrame
             
             if (dialogResult == JOptionPane.YES_OPTION) {
                 bookMan.deleteBook(bookId);    
-                loadBooksIntoTableBooks();
+                loadBooksTableBooks();
                 clearBookDetails();
                 btnSaveBook.setEnabled(true);                
                 JOptionPane.showMessageDialog(this, "Book deleted successfully.");
@@ -964,12 +999,12 @@ public class home extends javax.swing.JFrame
         }
     }
     
-    private void loadBooksIntoTableIssueBooks() {
+    private void loadBooksTableIssueBooks() {
         DefaultTableModel model = (DefaultTableModel) tableIssueBooks.getModel();
         loadBooksIntoTable(model);
     }
     
-    private void loadBooksIntoTableBooks() {
+    private void loadBooksTableBooks() {
         DefaultTableModel model = (DefaultTableModel) tableBooks.getModel();
         loadBooksIntoTable(model);
     }
@@ -1006,8 +1041,11 @@ public class home extends javax.swing.JFrame
             }           
     }
     
-    private void tableMouseClicked(DefaultTableModel model, int selectedRow) 
-    {       
+    private void tableBooksMouseClicked(MouseEvent evt) 
+    {
+        int selectedRow = tableBooks.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tableBooks.getModel();
+        
         txtBookId.setText(model.getValueAt(selectedRow, 0).toString());
         txtTitle.setText(model.getValueAt(selectedRow, 1).toString());
         txtAuthor.setText(model.getValueAt(selectedRow, 2).toString());
@@ -1016,22 +1054,18 @@ public class home extends javax.swing.JFrame
         txtISBN.setText(model.getValueAt(selectedRow, 5).toString());
         btnSaveBook.setEnabled(false);
         btnDeleteBook.setEnabled(true);
-        btnUpdateBook.setEnabled(true);        
+        btnUpdateBook.setEnabled(true);
     }
     
-    private void tableBooksMouseClicked(MouseEvent evt) 
+    private void tableIssueBooksMouseClicked(MouseEvent evt)
     {
-        int selectedRow = tableBooks.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tableBooks.getModel();
-        tableMouseClicked(model, selectedRow);
-    }
-    
-    private void tableIssueBookMouseClicked(MouseEvent evt) {
         int selectedRow = tableIssueBooks.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel) tableIssueBooks.getModel();
-        tableMouseClicked(model, selectedRow);
-    }
-    
+      
+        txtIssueBookId.setText(model.getValueAt(selectedRow, 0).toString());
+        txtIssueBookTitle.setText(model.getValueAt(selectedRow, 1).toString());
+        txtIssueBookAuthor.setText(model.getValueAt(selectedRow, 2).toString());        
+     }
     
     private void tableStudentsMouseClicked(MouseEvent evt) {
         int selectedRow = tableStudents.getSelectedRow();
@@ -1110,6 +1144,8 @@ public class home extends javax.swing.JFrame
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1122,18 +1158,20 @@ public class home extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tableBooks;
     private javax.swing.JTable tableIssueBooks;
     private javax.swing.JTable tableStudents;
     private javax.swing.JTextField txtAuthor;
     private javax.swing.JTextField txtBookId;
+    private javax.swing.JTextField txtDueDate;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtISBN;
+    private javax.swing.JTextField txtIssueBookAuthor;
+    private javax.swing.JTextField txtIssueBookId;
+    private javax.swing.JTextField txtIssueBookTitle;
+    private javax.swing.JTextField txtIssueDate;
+    private javax.swing.JTextField txtIssueToStudentId;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtPublicationYear;
     private javax.swing.JTextField txtPublisher;
