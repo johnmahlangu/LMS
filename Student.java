@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.servlet;
-import java.util.*;
 
 /**
  *
@@ -15,7 +14,6 @@ public class Student
     private String lastName;
     private String email;
     private int studentId;
-    private List<IssueBook> borrowedBooks;
 
     public Student()
     {}
@@ -57,12 +55,4 @@ public class Student
     public void setStudentId(int studentId) {
         this.studentId = studentId;
     }   
-
-    public List<IssueBook> getBorrowedBooks() {
-        return borrowedBooks;
-    }
-
-    public void setBorrowedBooks(List<IssueBook> borrowedBooks) {
-        this.borrowedBooks = borrowedBooks;
-    }
 }

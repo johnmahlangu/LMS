@@ -878,8 +878,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtIssueDate">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtIssueBookId">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtIssueToStudentId">
             </Component>
@@ -972,8 +978,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtIssueBookTitle">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtIssueBookAuthor">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

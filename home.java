@@ -6,6 +6,8 @@ package com.servlet;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,10 +18,11 @@ import javax.swing.table.DefaultTableModel;
 public class home extends javax.swing.JFrame 
 {
     private final BooksDAO booksDAO;
-    private final IssuedBookDAO issuedBookDAO;
+    private final IssueBookDAO issueBookDAO;
     private final StudentsDAO studentsDAO;
     private final BookManager bookMan;
     private final StudentManager studentMan;
+    private final IssueBookManager issueBookMan;
     
     /**
      * Creates new form home
@@ -27,10 +30,11 @@ public class home extends javax.swing.JFrame
     
     public home() {
         this.booksDAO = new BooksDAO();
-        this.issuedBookDAO = new IssuedBookDAO();
+        this.issueBookDAO = new IssueBookDAO();
         this.studentsDAO = new StudentsDAO();
         this.bookMan = new BookManager(booksDAO);
         this.studentMan = new StudentManager(studentsDAO);
+        this.issueBookMan = new IssueBookManager(issueBookDAO);
         initComponents();
         btnDeleteBook.setEnabled(false);
         btnUpdateBook.setEnabled(false);
@@ -594,6 +598,10 @@ public class home extends javax.swing.JFrame
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel14.setText("Due Date:");
 
+        txtIssueDate.setEditable(false);
+
+        txtIssueBookId.setEditable(false);
+
         tableIssueBooks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -629,6 +637,10 @@ public class home extends javax.swing.JFrame
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel16.setText("Author:");
+
+        txtIssueBookTitle.setEditable(false);
+
+        txtIssueBookAuthor.setEditable(false);
 
         javax.swing.GroupLayout IssueBookPanelLayout = new javax.swing.GroupLayout(IssueBookPanel);
         IssueBookPanel.setLayout(IssueBookPanelLayout);
@@ -860,6 +872,43 @@ public class home extends javax.swing.JFrame
         return book;
     }
     
+    private IssueBook getIssueBookDetails()
+    {
+        int studentId = Integer.parseInt(txtIssueToStudentId.getText());
+        int bookId = Integer.parseInt(txtIssueBookId.getText());
+        LocalDate issueDate; 
+        LocalDate dueDate;
+           
+        try {
+            
+            issueDate = LocalDate.parse(txtIssueDate.getText()); 
+            dueDate = LocalDate.parse(txtDueDate.getText());
+    
+        } catch (DateTimeParseException e) {
+            JOptionPane.showMessageDialog(this, "Please enter valid date.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        } 
+        return new IssueBook(studentId, bookId, issueDate, dueDate);
+    }
+    
+    private void IssueBook() 
+    {
+        try {
+            IssueBook issueBook = getIssueBookDetails();
+            Student student = new Student();
+            
+            if (studentMan.studentExistsByStudentId(student.getStudentId())) {
+               issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssued_date(), issueBook.getReturn_date());
+               JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Student ID does not exist.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void searchBooks() {
         String keyword = txtSearchBooks.getText();
         List<Book> searchResult = bookMan.searchBook(keyword);
@@ -897,7 +946,8 @@ public class home extends javax.swing.JFrame
         }
     }
     
-    private void saveBook() {
+    private void saveBook() 
+    {
         try {
             Book newBook = getBookDetails();
             
@@ -1065,7 +1115,7 @@ public class home extends javax.swing.JFrame
         txtIssueBookId.setText(model.getValueAt(selectedRow, 0).toString());
         txtIssueBookTitle.setText(model.getValueAt(selectedRow, 1).toString());
         txtIssueBookAuthor.setText(model.getValueAt(selectedRow, 2).toString());        
-     }
+    }
     
     private void tableStudentsMouseClicked(MouseEvent evt) {
         int selectedRow = tableStudents.getSelectedRow();

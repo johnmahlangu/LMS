@@ -17,7 +17,7 @@ public class IssueBookManager
         this.issueBookDAO = issuedBookDAO;
     }
     
-    public void borrowedBook(int book_id,int user_id, LocalDate issued_date, LocalDate return_date)
+    public void issueBook(int book_id,int user_id, LocalDate issued_date, LocalDate return_date)
     {
         IssueBook issueBook = new IssueBook(book_id, user_id, issued_date, return_date);
         issueBookDAO.addToBorrowedBooks(issueBook);
