@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package com.servlet;
+
+import java.util.List;
+
 /**
  *
  * @author Thokozani Mahlangu
@@ -11,5 +14,5 @@ public interface IssueBookRepository
 {
     void addToBorrowedBooks(IssueBook borrowedBoo);
     void deleteFromBorrowedBooks(int issuedID);
-    void readFromBorrowedBooks(int userID);
+    List<IssueBook> readAllIssuedBooks();
 }

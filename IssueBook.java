@@ -13,8 +13,8 @@ public class IssueBook
 {
     private int bookId;
     private int studentId;
-    private LocalDate issued_date;
-    private LocalDate return_date;
+    private LocalDate issueDate;
+    private LocalDate dueDate;
 
     // Constructors
     public IssueBook() {
@@ -23,8 +23,8 @@ public class IssueBook
     public IssueBook(int bookId, int studentId, LocalDate issued_date, LocalDate return_date) {
         this.bookId = bookId;
         this.studentId = studentId;
-        this.issued_date = issued_date;
-        this.return_date = return_date;
+        this.issueDate = issued_date;
+        this.dueDate = return_date;
     }
 
     public int getBookId() 
@@ -47,23 +47,23 @@ public class IssueBook
         this.studentId = studentId;
     }
 
-    public LocalDate getIssued_date() 
+    public LocalDate getIssueDate() 
     {
-        return issued_date;
+        return issueDate;
     }
     
-    public void setIssued_date(LocalDate issued_date) 
+    public void setIssueDate(LocalDate issueDate) 
     {
-        this.issued_date = issued_date;
+        this.issueDate = issueDate;
     }
 
-    public LocalDate getReturn_date() 
+    public LocalDate getDueDate() 
     {
-        return return_date;
+        return dueDate;
     }
 
-    public void setReturn_date(LocalDate return_date) 
+    public void setDueDate(LocalDate dueDate) 
     {
-        this.return_date = return_date;
+        this.dueDate = dueDate;
     }
 }

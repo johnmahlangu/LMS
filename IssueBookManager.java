@@ -5,6 +5,7 @@
 package com.servlet;
 
 import java.time.LocalDate;
+import java.util.List;
 /**
  *
  * @author Thokozani Mahlangu
@@ -19,10 +20,8 @@ public class IssueBookManager
     
     public void issueBook(int book_id,int student_id, LocalDate issued_date, LocalDate return_date)
     {
-        System.out.println("About to call addToBorrowedBooks");
         IssueBook issueBook = new IssueBook(book_id, student_id, issued_date, return_date);
         issueBookDAO.addToBorrowedBooks(issueBook);
-        System.out.println("Finished call to addToBorrowedBooks");
     }
     
     public void returnBookById(int bookID)
@@ -30,8 +29,8 @@ public class IssueBookManager
         issueBookDAO.deleteFromBorrowedBooks(bookID);
     }
     
-    public void borrowedByStudentId(int studentId)
+    public List<IssueBook> issuedBooks()
     {
-        issueBookDAO.readFromBorrowedBooks(studentId);
+        List<IssueB
     }
 }
