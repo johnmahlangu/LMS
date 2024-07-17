@@ -130,6 +130,25 @@ public class home extends javax.swing.JFrame
         jLabel16 = new javax.swing.JLabel();
         txtIssueBookTitle = new javax.swing.JTextField();
         txtIssueBookAuthor = new javax.swing.JTextField();
+        ReturnBookPanel = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tableReturnBook = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -161,6 +180,11 @@ public class home extends javax.swing.JFrame
 
         btnReturnBookPanel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnReturnBookPanel.setText("Return Book");
+        btnReturnBookPanel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnBookPanelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -734,13 +758,147 @@ public class home extends javax.swing.JFrame
 
         Parent.add(IssueBookPanel, "card4");
 
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel18.setText("IssueDate:");
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel19.setText("Author:");
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel20.setText("Title:");
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setText("Book ID:");
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setText("Student ID:");
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel23.setText("Due Date:");
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel24.setText("Return Date:");
+
+        tableReturnBook.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Book ID", "Student ID", "Issue Date", "Due Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tableReturnBook);
+        if (tableReturnBook.getColumnModel().getColumnCount() > 0) {
+            tableReturnBook.getColumnModel().getColumn(0).setResizable(false);
+            tableReturnBook.getColumnModel().getColumn(1).setResizable(false);
+            tableReturnBook.getColumnModel().getColumn(2).setResizable(false);
+            tableReturnBook.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setText("Return Book");
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setText("Clear");
+
+        javax.swing.GroupLayout ReturnBookPanelLayout = new javax.swing.GroupLayout(ReturnBookPanel);
+        ReturnBookPanel.setLayout(ReturnBookPanelLayout);
+        ReturnBookPanelLayout.setHorizontalGroup(
+            ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel22))
+                .addGap(82, 82, 82)
+                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1)
+                    .addComponent(jTextField3)
+                    .addComponent(jTextField2)
+                    .addComponent(jTextField6)
+                    .addComponent(jTextField5)
+                    .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton2))
+                    .addComponent(jTextField7)
+                    .addComponent(jTextField4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+        );
+
+        ReturnBookPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
+
+        ReturnBookPanelLayout.setVerticalGroup(
+            ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel20)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel18)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
+                        .addGap(0, 11, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        ReturnBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2});
+
+        Parent.add(ReturnBookPanel, "card5");
+
         getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 1020, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageBooksPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBooksPanelActionPerformed
-        // TODO add your handling code here:
+
         Parent.removeAll();
         Parent.add(ManageBooksPanel);
         Parent.repaint();
@@ -823,6 +981,13 @@ public class home extends javax.swing.JFrame
         txtIssueBookTitle.setText("");
         txtIssueBookAuthor.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnReturnBookPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnBookPanelActionPerformed
+        Parent.removeAll();
+        Parent.add(ReturnBookPanel);
+        Parent.repaint();
+        Parent.revalidate();
+    }//GEN-LAST:event_btnReturnBookPanelActionPerformed
     
     private Student getStudentDetails() {
         String firstName = txtFirstName.getText().trim();
@@ -918,7 +1083,6 @@ public class home extends javax.swing.JFrame
         IssueBook issueBook = getIssueBookDetails();
         
             if ( studentMan.studentExistsByStudentId(issueBook.getStudentId())){
-                System.out.println("Student and book exist, issuing book...");
                 issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssued_date(), issueBook.getReturn_date());
                 JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
             } 
@@ -1194,6 +1358,7 @@ public class home extends javax.swing.JFrame
     private javax.swing.JPanel ManageBooksPanel;
     private javax.swing.JPanel ManageStudentsPanel;
     private javax.swing.JPanel Parent;
+    private javax.swing.JPanel ReturnBookPanel;
     private javax.swing.JButton btnClearBook;
     private javax.swing.JButton btnClearStudent;
     private javax.swing.JButton btnDeleteBook;
@@ -1211,6 +1376,8 @@ public class home extends javax.swing.JFrame
     private javax.swing.JButton btnUpdateStudent;
     private javax.swing.JButton btnViewAllBooks;
     private javax.swing.JButton btnViewAllStudents;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1220,7 +1387,14 @@ public class home extends javax.swing.JFrame
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1232,8 +1406,17 @@ public class home extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JTable tableBooks;
     private javax.swing.JTable tableIssueBooks;
+    private javax.swing.JTable tableReturnBook;
     private javax.swing.JTable tableStudents;
     private javax.swing.JTextField txtAuthor;
     private javax.swing.JTextField txtBookId;
