@@ -5,6 +5,8 @@
 package com.servlet;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,8 +29,8 @@ public class IssueBookDAO implements IssueBookRepository
         {          
             ps.setInt(1, issueBook.getBookId());
             ps.setInt(2, issueBook.getStudentId());
-            ps.setDate(3, Date.valueOf(issueBook.getIssued_date()));
-            ps.setDate(4, Date.valueOf(issueBook.getReturn_date()));
+            ps.setDate(3, Date.valueOf(issueBook.getIssueDate()));
+            ps.setDate(4, Date.valueOf(issueBook.getDueDate()));
                   
             ps.executeUpdate();
             
@@ -39,7 +41,6 @@ public class IssueBookDAO implements IssueBookRepository
             System.out.println("Error issuing book: " + e.getMessage());
             e.printStackTrace();
         }
-        System.out.println("add to borrowed books run");
     }
    
     @Override
@@ -66,30 +67,28 @@ public class IssueBookDAO implements IssueBookRepository
     }
     
     @Override
-    public void readFromBorrowedBooks(int StudentId)
-    {        
-        String sql = "SELECT DISTINCT borrowed_books.*, books.title " +
-                     "FROM borrowed_books " +
-                     "JOIN books ON borrowed_books.book_id = books.book_id " +
-                     "WHERE borrowed_books.student_id = ?";
-        
-        try (PreparedStatement ps = connection.prepareStatement(sql))
-        {
-            ps.setInt(1, StudentId);        
-            try (ResultSet rs = ps.executeQuery()) 
-            {
-                while(rs.next()) {
-                    int bookId = rs.getInt("book_id");
-                    int title = rs.getInt("student_id");
-                    Date borrowDate = rs.getDate("borrow_date");
-                    Date returnDate = rs.getDate("return_date");
-                    
-                    System.out.printf("Book ID: %d, Title: %s, Borrowed Date: %s, Return Date: %s\n", 
-                                      bookId, title, borrowDate, returnDate);
-                }
+    public List<IssueBook> readAllIssuedBooks()
+    {   
+        List<IssueBook> issuedBooks = new ArrayList<>();
+            
+        try {
+            String query = "SELECT * FROM borrowed_books";           
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            
+            while (rs.next()) {
+                IssueBook issueBook = new IssueBook();
+                
+                issueBook.setBookId(rs.getInt("book_id"));
+                issueBook.setStudentId(rs.getInt("student_id"));
+                issueBook.setIssueDate(rs.getDate("issued_date").toLocalDate());
+                issueBook.setDueDate(rs.getDate("due_date").toLocalDate());
+                
+                issuedBooks.add(issueBook);
             }
         } catch (SQLException e) {
-            System.err.println("Error fetching borrowed books: " + e.getMessage());
-        }           
+            e.printStackTrace();
+        }
+        return issuedBooks;
     }
 }
