@@ -82,6 +82,7 @@ public class home extends javax.swing.JFrame
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         btnManageBooksPanel = new javax.swing.JButton();
@@ -157,8 +158,8 @@ public class home extends javax.swing.JFrame
         txtStudentIdReturn = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableReturnBook = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnReturnBook = new javax.swing.JButton();
+        btnClearReturnBook = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Library Management System");
@@ -769,17 +770,82 @@ public class home extends javax.swing.JFrame
 
         Parent.add(IssueBookPanel, "card4");
 
+        ReturnBookPanel.setLayout(new java.awt.GridBagLayout());
+
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel18.setText("Issued Date:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(43, 95, 0, 0);
+        ReturnBookPanel.add(jLabel18, gridBagConstraints);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel21.setText("Book ID:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(43, 95, 0, 0);
+        ReturnBookPanel.add(jLabel21, gridBagConstraints);
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel22.setText("Student ID:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(102, 95, 0, 0);
+        ReturnBookPanel.add(jLabel22, gridBagConstraints);
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setText("Due Date:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(43, 95, 0, 0);
+        ReturnBookPanel.add(jLabel23, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 173;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(43, 84, 0, 0);
+        ReturnBookPanel.add(txtIssuedDateReturn, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 173;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(43, 84, 0, 0);
+        ReturnBookPanel.add(txtBookIdReturn, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 173;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(43, 84, 0, 0);
+        ReturnBookPanel.add(txtDueDateReturn, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 173;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(102, 84, 0, 0);
+        ReturnBookPanel.add(txtStudentIdReturn, gridBagConstraints);
 
         tableReturnBook.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -808,75 +874,49 @@ public class home extends javax.swing.JFrame
             tableReturnBook.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Return Book");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 489;
+        gridBagConstraints.ipady = 422;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(102, 18, 6, 6);
+        ReturnBookPanel.add(jScrollPane4, gridBagConstraints);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Clear");
+        btnReturnBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnReturnBook.setText("Return Book");
+        btnReturnBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnBookActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.ipady = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(72, 84, 0, 0);
+        ReturnBookPanel.add(btnReturnBook, gridBagConstraints);
 
-        javax.swing.GroupLayout ReturnBookPanelLayout = new javax.swing.GroupLayout(ReturnBookPanel);
-        ReturnBookPanel.setLayout(ReturnBookPanelLayout);
-        ReturnBookPanelLayout.setHorizontalGroup(
-            ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel23)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel22))
-                .addGap(84, 84, 84)
-                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ReturnBookPanelLayout.createSequentialGroup()
-                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIssuedDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDueDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBookIdReturn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))
-                        .addGap(18, 18, 18))
-                    .addComponent(txtStudentIdReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
-        );
-
-        ReturnBookPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
-
-        ReturnBookPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtBookIdReturn, txtDueDateReturn, txtIssuedDateReturn, txtStudentIdReturn});
-
-        ReturnBookPanelLayout.setVerticalGroup(
-            ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
-                    .addGroup(ReturnBookPanelLayout.createSequentialGroup()
-                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
-                            .addComponent(txtStudentIdReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
-                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBookIdReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21))
-                        .addGap(43, 43, 43)
-                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(txtIssuedDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
-                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(txtDueDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(72, 72, 72)
-                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        ReturnBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2});
+        btnClearReturnBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnClearReturnBook.setText("Clear");
+        btnClearReturnBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearReturnBookActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.ipadx = 34;
+        gridBagConstraints.ipady = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(72, 25, 0, 0);
+        ReturnBookPanel.add(btnClearReturnBook, gridBagConstraints);
 
         Parent.add(ReturnBookPanel, "card5");
 
@@ -976,6 +1016,17 @@ public class home extends javax.swing.JFrame
         Parent.repaint();
         Parent.revalidate();
     }//GEN-LAST:event_btnReturnBookPanelActionPerformed
+
+    private void btnReturnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnBookActionPerformed
+        returnBook();
+    }//GEN-LAST:event_btnReturnBookActionPerformed
+
+    private void btnClearReturnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearReturnBookActionPerformed
+        txtIssueToStudentId.setText("");
+        txtIssueBookId.setText("");
+        txtIssueDate.setText("");
+        txtIssueBookId.setText("");
+    }//GEN-LAST:event_btnClearReturnBookActionPerformed
     
     private Student getStudentDetails() {
         String firstName = txtFirstName.getText().trim();
@@ -1066,13 +1117,15 @@ public class home extends javax.swing.JFrame
         return new IssueBook(bookId, studentId, issueDate, dueDate);
     }
     
-    private void issueBook() {
-    try {
-        IssueBook issueBook = getIssueBookDetails();
-        
+    private void issueBook() 
+    {
+        try {
+            IssueBook issueBook = getIssueBookDetails();
+            
             if ( studentMan.studentExistsByStudentId(issueBook.getStudentId())){
-                issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssueDate(), issueBook.getDueDate());
-                JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
+                    issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssueDate(), issueBook.getDueDate());
+                    loadBooksReturnBooks();
+                    JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
             } 
             else {
                 System.out.println("student ID does not exist.");
@@ -1145,6 +1198,7 @@ public class home extends javax.swing.JFrame
             
             bookMan.bookUpdate(bookId, updatedBook);           
             loadBooksTableBooks();
+            loadBooksTableIssueBooks();
             clearBookDetails();
             btnSaveBook.setEnabled(true);           
             JOptionPane.showMessageDialog(this, "Book updated successfully.");
@@ -1200,6 +1254,21 @@ public class home extends javax.swing.JFrame
             } else {}
             
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void returnBook()
+    {
+        try {
+            int studentId = Integer.parseInt(txtStudentIdReturn.getText());
+            int bookId = Integer.parseInt(txtBookIdReturn.getText());
+            
+            issueBookMan.returnBook(bookId, studentId);
+            loadBooksReturnBooks();
+            JOptionPane.showMessageDialog(this, "Book returned successfully");
+            
+        } catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -1368,6 +1437,7 @@ public class home extends javax.swing.JFrame
     private javax.swing.JPanel ReturnBookPanel;
     private javax.swing.JButton btnClearBook;
     private javax.swing.JButton btnClearIssueBook;
+    private javax.swing.JButton btnClearReturnBook;
     private javax.swing.JButton btnClearStudent;
     private javax.swing.JButton btnDeleteBook;
     private javax.swing.JButton btnDeleteStudent;
@@ -1375,6 +1445,7 @@ public class home extends javax.swing.JFrame
     private javax.swing.JButton btnIssueBookPanel;
     private javax.swing.JButton btnManageBooksPanel;
     private javax.swing.JButton btnManageStudentsPanel;
+    private javax.swing.JButton btnReturnBook;
     private javax.swing.JButton btnReturnBookPanel;
     private javax.swing.JButton btnSaveBook;
     private javax.swing.JButton btnSaveStudent;
@@ -1384,8 +1455,6 @@ public class home extends javax.swing.JFrame
     private javax.swing.JButton btnUpdateStudent;
     private javax.swing.JButton btnViewAllBooks;
     private javax.swing.JButton btnViewAllStudents;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
