@@ -23,7 +23,7 @@ public class IssueBookDAO implements IssueBookRepository
     @Override
     public void addToIssuedBooks(IssueBook issueBook)
     {        
-        String sql = "INSERT INTO borrowed_books (book_id, student_id, borrow_date, return_date) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO issued_books (book_id, student_id, issued_date, due_date) VALUES(?,?,?,?)";
         
         try (PreparedStatement ps = connection.prepareStatement(sql))
         {          
@@ -44,20 +44,21 @@ public class IssueBookDAO implements IssueBookRepository
     }
    
     @Override
-    public void deleteFromIssuedBooks(int issuedId, int studentId)
+    public void deleteFromIssuedBooks(int bookId, int studentId)
     {        
         String query = "DELETE FROM issued_books WHERE book_id = ? AND student_id = ?";
         
         try (PreparedStatement ps = connection.prepareStatement(query))
         {
-            ps.setInt(1, issuedId);
+            ps.setInt(1, bookId);
             ps.setInt(2, studentId);
             
             int rowsAffected = ps.executeUpdate();
             
             if (rowsAffected > 0) {
                 System.out.println("Book returned successfully.");
-            } else {
+            } 
+            else {
                 System.out.println("No book found with the given ID.");
             }
             

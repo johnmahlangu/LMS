@@ -25,7 +25,7 @@ public class IssueBookManager
     
     public void returnBook(int bookId, int studentId)
     {
-        issueBookDAO.deleteFromIssuedBooks(studentId, studentId);
+        issueBookDAO.deleteFromIssuedBooks(bookId, studentId);
     }
     
     public List<IssueBook> displayIssuedBooks()

@@ -13,6 +13,6 @@ import java.util.List;
 public interface IssueBookRepository 
 {
     void addToIssuedBooks(IssueBook issueBook);
-    void deleteFromIssuedBooks(int issuedId, int studentId);
+    void deleteFromIssuedBooks(int bookId, int studentId);
     List<IssueBook> readAllIssuedBooks();
 }

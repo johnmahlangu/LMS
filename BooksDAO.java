@@ -42,9 +42,11 @@ public class BooksDAO implements BookRepository
         List<Book> books = new ArrayList<>();
         
         try 
-        {            
+        {  
+            String query = "SELECT * FROM books";
+            
             Statement st = connection.createStatement();
-            ResultSet  rs = st.executeQuery("SELECT * FROM books");
+            ResultSet  rs = st.executeQuery(query);
              
             while (rs.next())
             {
