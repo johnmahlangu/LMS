@@ -20,17 +20,16 @@ public class IssueBookManager
     
     public void issueBook(int book_id,int student_id, LocalDate issued_date, LocalDate return_date)
     {
-        IssueBook issueBook = new IssueBook(book_id, student_id, issued_date, return_date);
-        issueBookDAO.addToBorrowedBooks(issueBook);
+        issueBookDAO.addToIssuedBooks(new IssueBook(book_id, student_id, issued_date, return_date));
     }
     
-    public void returnBookById(int bookID)
+    public void returnBook(int bookId, int studentId)
     {
-        issueBookDAO.deleteFromBorrowedBooks(bookID);
+        issueBookDAO.deleteFromIssuedBooks(studentId, studentId);
     }
     
-    public List<IssueBook> issuedBooks()
-    {
-        List<IssueB
+    public List<IssueBook> displayIssuedBooks()
+    {     
+        return issueBookDAO.readAllIssuedBooks();
     }
 }

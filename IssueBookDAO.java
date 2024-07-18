@@ -21,7 +21,7 @@ public class IssueBookDAO implements IssueBookRepository
     }
      
     @Override
-    public void addToBorrowedBooks(IssueBook issueBook)
+    public void addToIssuedBooks(IssueBook issueBook)
     {        
         String sql = "INSERT INTO borrowed_books (book_id, student_id, borrow_date, return_date) VALUES(?,?,?,?)";
         
@@ -44,13 +44,14 @@ public class IssueBookDAO implements IssueBookRepository
     }
    
     @Override
-    public void deleteFromBorrowedBooks(int issuedID)
+    public void deleteFromIssuedBooks(int issuedId, int studentId)
     {        
-        String sql = "DELETE FROM borrowed_books WHERE book_id = ?";
+        String query = "DELETE FROM issued_books WHERE book_id = ? AND student_id = ?";
         
-        try (PreparedStatement ps = connection.prepareStatement(sql))
+        try (PreparedStatement ps = connection.prepareStatement(query))
         {
-            ps.setInt(1, issuedID);
+            ps.setInt(1, issuedId);
+            ps.setInt(2, studentId);
             
             int rowsAffected = ps.executeUpdate();
             
@@ -72,7 +73,7 @@ public class IssueBookDAO implements IssueBookRepository
         List<IssueBook> issuedBooks = new ArrayList<>();
             
         try {
-            String query = "SELECT * FROM borrowed_books";           
+            String query = "SELECT * FROM issued_books";           
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(query);
             

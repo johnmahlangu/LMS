@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface IssueBookRepository 
 {
-    void addToBorrowedBooks(IssueBook borrowedBoo);
-    void deleteFromBorrowedBooks(int issuedID);
+    void addToIssuedBooks(IssueBook issueBook);
+    void deleteFromIssuedBooks(int issuedId, int studentId);
     List<IssueBook> readAllIssuedBooks();
 }
