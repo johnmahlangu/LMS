@@ -82,7 +82,6 @@ public class home extends javax.swing.JFrame
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         btnManageBooksPanel = new javax.swing.JButton();
@@ -163,7 +162,6 @@ public class home extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Library Management System");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 255));
 
@@ -209,7 +207,7 @@ public class home extends javax.swing.JFrame
                     .addComponent(btnIssueBookPanel)
                     .addComponent(btnManageBooksPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnManageStudentsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnIssueBookPanel, btnManageBooksPanel, btnManageStudentsPanel, btnReturnBookPanel});
@@ -217,7 +215,7 @@ public class home extends javax.swing.JFrame
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
+                .addContainerGap(134, Short.MAX_VALUE)
                 .addComponent(btnManageBooksPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(btnManageStudentsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,12 +223,12 @@ public class home extends javax.swing.JFrame
                 .addComponent(btnIssueBookPanel)
                 .addGap(45, 45, 45)
                 .addComponent(btnReturnBookPanel)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnIssueBookPanel, btnManageBooksPanel, btnManageStudentsPanel, btnReturnBookPanel});
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 550));
+        getContentPane().add(jPanel1, java.awt.BorderLayout.WEST);
 
         Parent.setLayout(new java.awt.CardLayout());
 
@@ -377,7 +375,7 @@ public class home extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ManageBooksPanelLayout.createSequentialGroup()
-                        .addGap(0, 97, Short.MAX_VALUE)
+                        .addGap(0, 159, Short.MAX_VALUE)
                         .addComponent(txtSearchBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearchBooks)
@@ -400,9 +398,6 @@ public class home extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ManageBooksPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManageBooksPanelLayout.createSequentialGroup()
                         .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(txtBookId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -430,11 +425,13 @@ public class home extends javax.swing.JFrame
                         .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSaveBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnUpdateBook))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(48, 48, 48)
                         .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDeleteBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnClearBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19))))
+                        .addGap(0, 76, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
 
         ManageBooksPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClearBook, btnDeleteBook, btnSaveBook, btnUpdateBook});
@@ -443,18 +440,23 @@ public class home extends javax.swing.JFrame
 
         Parent.add(ManageBooksPanel, "card3");
 
+        ManageStudentsPanel.setBackground(new java.awt.Color(51, 51, 51));
         ManageStudentsPanel.setPreferredSize(new java.awt.Dimension(760, 700));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("First Name:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Last Name:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Student ID:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Email Address:");
 
         txtStudentId.setEditable(false);
@@ -512,6 +514,7 @@ public class home extends javax.swing.JFrame
                 return canEdit [columnIndex];
             }
         });
+        tableStudents.setPreferredSize(new java.awt.Dimension(450, 0));
         jScrollPane2.setViewportView(tableStudents);
         if (tableStudents.getColumnModel().getColumnCount() > 0) {
             tableStudents.getColumnModel().getColumn(0).setResizable(false);
@@ -539,36 +542,37 @@ public class home extends javax.swing.JFrame
         ManageStudentsPanelLayout.setHorizontalGroup(
             ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
                 .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(60, 60, 60)
-                .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtStudentId, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ManageStudentsPanelLayout.createSequentialGroup()
-                        .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnDeleteStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSaveStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManageStudentsPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnViewAllStudents))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManageStudentsPanelLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
                         .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdateStudent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnClearStudent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtLastName)
-                    .addComponent(txtEmail)
-                    .addComponent(txtFirstName))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnViewAllStudents)
-                .addGap(21, 21, 21))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(60, 60, 60)
+                        .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnDeleteStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSaveStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                            .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnUpdateStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnClearStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         ManageStudentsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4});
@@ -609,7 +613,7 @@ public class home extends javax.swing.JFrame
                         .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDeleteStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnClearStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 110, Short.MAX_VALUE))
+                        .addGap(0, 183, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -623,15 +627,19 @@ public class home extends javax.swing.JFrame
         IssueBookPanel.setBackground(new java.awt.Color(51, 51, 51));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setText("Student ID:");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setText("Book ID:");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText("Issue Date:");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
         jLabel14.setText("Due Date:");
 
         txtIssueDate.setEditable(false);
@@ -664,6 +672,7 @@ public class home extends javax.swing.JFrame
             tableIssueBook.getColumnModel().getColumn(5).setResizable(false);
         }
 
+        btnClearIssueBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnClearIssueBook.setText("Clear");
         btnClearIssueBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -671,6 +680,7 @@ public class home extends javax.swing.JFrame
             }
         });
 
+        btnIssueBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnIssueBook.setText("Issue Book");
         btnIssueBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -679,9 +689,11 @@ public class home extends javax.swing.JFrame
         });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
         jLabel15.setText("Title:");
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(204, 204, 204));
         jLabel16.setText("Author:");
 
         txtIssueBookTitle.setEditable(false);
@@ -693,34 +705,33 @@ public class home extends javax.swing.JFrame
         IssueBookPanelLayout.setHorizontalGroup(
             IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(70, 70, 70)
+                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(67, 67, 67)
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13))
-                        .addGap(61, 61, 61)
-                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDueDate)
                             .addGroup(IssueBookPanelLayout.createSequentialGroup()
                                 .addComponent(btnIssueBook)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                                 .addComponent(btnClearIssueBook))
-                            .addComponent(txtIssueDate, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(txtDueDate)))
                     .addGroup(IssueBookPanelLayout.createSequentialGroup()
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addComponent(jLabel16)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel11))
-                        .addGap(59, 59, 59)
-                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIssueToStudentId)
-                            .addComponent(txtIssueBookId)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel13))
+                        .addGap(60, 60, 60)
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtIssueDate, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(txtIssueBookTitle)
-                            .addComponent(txtIssueBookAuthor))))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIssueBookId)
+                            .addComponent(txtIssueToStudentId)
+                            .addComponent(txtIssueBookAuthor, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -732,7 +743,7 @@ public class home extends javax.swing.JFrame
                 .addGap(104, 104, 104)
                 .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IssueBookPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(IssueBookPanelLayout.createSequentialGroup()
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -770,82 +781,24 @@ public class home extends javax.swing.JFrame
 
         Parent.add(IssueBookPanel, "card4");
 
-        ReturnBookPanel.setLayout(new java.awt.GridBagLayout());
+        ReturnBookPanel.setBackground(new java.awt.Color(51, 51, 51));
+        ReturnBookPanel.setForeground(new java.awt.Color(60, 63, 65));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(204, 204, 204));
         jLabel18.setText("Issued Date:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 95, 0, 0);
-        ReturnBookPanel.add(jLabel18, gridBagConstraints);
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(204, 204, 204));
         jLabel21.setText("Book ID:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 95, 0, 0);
-        ReturnBookPanel.add(jLabel21, gridBagConstraints);
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(204, 204, 204));
         jLabel22.setText("Student ID:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(102, 95, 0, 0);
-        ReturnBookPanel.add(jLabel22, gridBagConstraints);
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(204, 204, 204));
         jLabel23.setText("Due Date:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 95, 0, 0);
-        ReturnBookPanel.add(jLabel23, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 173;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 84, 0, 0);
-        ReturnBookPanel.add(txtIssuedDateReturn, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 173;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 84, 0, 0);
-        ReturnBookPanel.add(txtBookIdReturn, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 173;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 84, 0, 0);
-        ReturnBookPanel.add(txtDueDateReturn, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 173;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(102, 84, 0, 0);
-        ReturnBookPanel.add(txtStudentIdReturn, gridBagConstraints);
 
         tableReturnBook.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -859,7 +812,7 @@ public class home extends javax.swing.JFrame
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -874,33 +827,13 @@ public class home extends javax.swing.JFrame
             tableReturnBook.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 10;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 489;
-        gridBagConstraints.ipady = 422;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(102, 18, 6, 6);
-        ReturnBookPanel.add(jScrollPane4, gridBagConstraints);
-
         btnReturnBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnReturnBook.setText("Return Book");
+        btnReturnBook.setText("Return");
         btnReturnBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReturnBookActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.ipady = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(72, 84, 0, 0);
-        ReturnBookPanel.add(btnReturnBook, gridBagConstraints);
 
         btnClearReturnBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnClearReturnBook.setText("Clear");
@@ -909,18 +842,72 @@ public class home extends javax.swing.JFrame
                 btnClearReturnBookActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.ipadx = 34;
-        gridBagConstraints.ipady = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(72, 25, 0, 0);
-        ReturnBookPanel.add(btnClearReturnBook, gridBagConstraints);
+
+        javax.swing.GroupLayout ReturnBookPanelLayout = new javax.swing.GroupLayout(ReturnBookPanel);
+        ReturnBookPanel.setLayout(ReturnBookPanelLayout);
+        ReturnBookPanelLayout.setHorizontalGroup(
+            ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel23))
+                .addGap(60, 60, 60)
+                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                        .addComponent(btnReturnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addComponent(btnClearReturnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtStudentIdReturn)
+                    .addComponent(txtBookIdReturn)
+                    .addComponent(txtIssuedDateReturn)
+                    .addComponent(txtDueDateReturn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        ReturnBookPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClearReturnBook, btnReturnBook});
+
+        ReturnBookPanelLayout.setVerticalGroup(
+            ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
+                    .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel21)
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel18)
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel23))
+                            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                                .addComponent(txtStudentIdReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtBookIdReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtIssuedDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(txtDueDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(72, 72, 72)
+                                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnReturnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnClearReturnBook))))
+                        .addGap(194, 194, 194)))
+                .addGap(6, 6, 6))
+        );
+
+        ReturnBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClearReturnBook, btnReturnBook});
 
         Parent.add(ReturnBookPanel, "card5");
 
-        getContentPane().add(Parent, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 1020, 550));
+        getContentPane().add(Parent, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
