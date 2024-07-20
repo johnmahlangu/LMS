@@ -147,6 +147,9 @@ public class home extends javax.swing.JFrame
         jLabel16 = new javax.swing.JLabel();
         txtIssueBookTitle = new javax.swing.JTextField();
         txtIssueBookAuthor = new javax.swing.JTextField();
+        txtSearchAvaiBook = new javax.swing.JTextField();
+        btnSearchAvaiBooks = new javax.swing.JButton();
+        btnViewAllAvaiBooks = new javax.swing.JButton();
         ReturnBookPanel = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -543,15 +546,15 @@ public class home extends javax.swing.JFrame
         ManageStudentsPanelLayout.setHorizontalGroup(
             ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
-                .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManageStudentsPanelLayout.createSequentialGroup()
-                        .addContainerGap(604, Short.MAX_VALUE)
+                .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnViewAllStudents))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManageStudentsPanelLayout.createSequentialGroup()
+                    .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -565,14 +568,14 @@ public class home extends javax.swing.JFrame
                                 .addComponent(btnSaveStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
                             .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnUpdateStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                    .addComponent(txtStudentId, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                    .addComponent(txtEmail))
                                 .addComponent(btnClearStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -710,38 +713,61 @@ public class home extends javax.swing.JFrame
 
         txtIssueBookAuthor.setEditable(false);
 
+        btnSearchAvaiBooks.setText("Search");
+        btnSearchAvaiBooks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchAvaiBooksActionPerformed(evt);
+            }
+        });
+
+        btnViewAllAvaiBooks.setText("View All Books");
+        btnViewAllAvaiBooks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAllAvaiBooksActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout IssueBookPanelLayout = new javax.swing.GroupLayout(IssueBookPanel);
         IssueBookPanel.setLayout(IssueBookPanelLayout);
         IssueBookPanelLayout.setHorizontalGroup(
-            IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(67, 67, 67)
-                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                                .addComponent(btnIssueBook)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                                .addComponent(btnClearIssueBook))
-                            .addComponent(txtDueDate)))
-                    .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel13))
-                        .addGap(60, 60, 60)
+                        .addGap(70, 70, 70)
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIssueDate, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addComponent(txtIssueBookTitle)
-                            .addComponent(txtIssueBookId)
-                            .addComponent(txtIssueToStudentId)
-                            .addComponent(txtIssueBookAuthor, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+                            .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(67, 67, 67)
+                                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                                        .addComponent(btnIssueBook)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                        .addComponent(btnClearIssueBook))
+                                    .addComponent(txtDueDate)))
+                            .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel13))
+                                .addGap(60, 60, 60)
+                                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtIssueBookTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                    .addComponent(txtIssueBookId)
+                                    .addComponent(txtIssueBookAuthor, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtIssueToStudentId)
+                                    .addComponent(txtIssueDate))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE))
+                    .addGroup(IssueBookPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtSearchAvaiBook, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSearchAvaiBooks)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnViewAllAvaiBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -750,10 +776,15 @@ public class home extends javax.swing.JFrame
         IssueBookPanelLayout.setVerticalGroup(
             IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
+                .addGap(64, 64, 64)
+                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearchAvaiBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchAvaiBooks)
+                    .addComponent(btnViewAllAvaiBooks))
+                .addGap(18, 18, 18)
                 .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IssueBookPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(IssueBookPanelLayout.createSequentialGroup()
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1031,6 +1062,14 @@ public class home extends javax.swing.JFrame
             txtDueDate.setText("yyyy-mm-dd");
         }
     }//GEN-LAST:event_txtDueDateFocusLost
+
+    private void btnSearchAvaiBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchAvaiBooksActionPerformed
+        searchAvaiBooks();
+    }//GEN-LAST:event_btnSearchAvaiBooksActionPerformed
+
+    private void btnViewAllAvaiBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAllAvaiBooksActionPerformed
+        loadBooksTableIssueBooks();
+    }//GEN-LAST:event_btnViewAllAvaiBooksActionPerformed
     
     private Student getStudentDetails() {
         String firstName = txtFirstName.getText().trim();
@@ -1158,13 +1197,10 @@ public class home extends javax.swing.JFrame
         }
     }
     
-    private void searchBooks() {
-        String keyword = txtSearchBooks.getText();
+    private void searchBooks(DefaultTableModel model, String keyword) 
+    {
         List<Book> searchResult = bookMan.searchBook(keyword);
-        
-        DefaultTableModel model = (DefaultTableModel) tableBooks.getModel();
-        
-        
+               
         if (searchResult.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No book(s) with search criteria found.");
         } 
@@ -1172,11 +1208,21 @@ public class home extends javax.swing.JFrame
             model.setRowCount(0);
             
             for (Book book : searchResult) {
-                model.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getStatus(), book.getPublicationYear(), book.getISBN()});
+                model.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getPublicationYear(), book.getISBN(), book.getStatus()});
             }
         }             
     }
     
+    private void searchBooks() {
+        String keyword = txtSearchBooks.getText();
+        searchBooks(tableBookModel, keyword);
+    }
+    
+    private void searchAvaiBooks() {
+        String keyword = txtSearchAvaiBook.getText();
+        searchBooks(tableIssueBookModel, keyword);
+    }
+               
     private void searchStudents() {
         String keyword = txtSearchStudent.getText();
         List<Student> searchResult = studentMan.searchStudent(keyword);
@@ -1496,10 +1542,12 @@ public class home extends javax.swing.JFrame
     private javax.swing.JButton btnReturnBookPanel;
     private javax.swing.JButton btnSaveBook;
     private javax.swing.JButton btnSaveStudent;
+    private javax.swing.JButton btnSearchAvaiBooks;
     private javax.swing.JButton btnSearchBooks;
     private javax.swing.JButton btnSearchStudent;
     private javax.swing.JButton btnUpdateBook;
     private javax.swing.JButton btnUpdateStudent;
+    private javax.swing.JButton btnViewAllAvaiBooks;
     private javax.swing.JButton btnViewAllBooks;
     private javax.swing.JButton btnViewAllStudents;
     private javax.swing.JLabel jLabel1;
@@ -1547,6 +1595,7 @@ public class home extends javax.swing.JFrame
     private javax.swing.JTextField txtIssuedDateReturn;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtPublicationYear;
+    private javax.swing.JTextField txtSearchAvaiBook;
     private javax.swing.JTextField txtSearchBooks;
     private javax.swing.JTextField txtSearchStudent;
     private javax.swing.JTextField txtStatus;

@@ -228,11 +228,11 @@ public class BooksDAO implements BookRepository
     {
         
         List<Book> searchResult = new ArrayList<>();
-        String query = "SELECT * FROM books WHERE book_id LIKE ? OR title LIKE ? OR author LIKE ? OR publication_year LIKE ? OR ISBN LIKE ?";
+        String query = "SELECT * FROM books WHERE book_id LIKE ? OR title LIKE ? OR author LIKE ? OR publication_year LIKE ? OR ISBN LIKE ? OR status LIKE ?";
         
         try (PreparedStatement ps = connection.prepareStatement(query))
         {
-            for (int i = 1; i <= 5; i++) {
+            for (int i = 1; i <= 6; i++) {
                 ps.setString(i, "%" + keyword + "%");
             }
             
@@ -247,6 +247,7 @@ public class BooksDAO implements BookRepository
                     book.setTitle(rs.getString("title"));
                     book.setPublicationYear(rs.getInt("publication_year"));
                     book.setISBN(rs.getString("ISBN"));
+                    book.setStatus(rs.getString("status"));
                     
                     searchResult.add(book);
                 }
