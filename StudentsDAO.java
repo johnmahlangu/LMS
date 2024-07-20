@@ -56,9 +56,8 @@ public class StudentsDAO implements StudentRepository
     {        
         List<Student> students = new ArrayList<>();
         
-        try
+        try(Statement st = connection.createStatement())
         {
-            Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM students");
             
             while (rs.next())
@@ -83,10 +82,8 @@ public class StudentsDAO implements StudentRepository
     {
         String query = "INSERT INTO students (first_name, last_name, email) VALUES(?,?,?)";
         
-        try
-        {
-            PreparedStatement ps = connection.prepareStatement(query);
-            
+        try(PreparedStatement ps = connection.prepareStatement(query);)
+        {           
             ps.setString(1, student.getFirstName());
             ps.setString(2, student.getLastName());
             ps.setString(3, student.getEmail());

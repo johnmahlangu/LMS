@@ -36,8 +36,8 @@ public class StudentManager
     
     public List<Student> displayAllStudents()
     {
-       List<Student> student = studentDAO.readStudents();
-       return student;
+       List<Student> students = studentDAO.readStudents();
+       return students;
     }
     
     public void studentUpdate(int studentId, Student student)

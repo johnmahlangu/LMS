@@ -40,12 +40,10 @@ public class BooksDAO implements BookRepository
     public List<Book> readFromBooks()
     {   
         List<Book> books = new ArrayList<>();
+        String query = "SELECT * FROM books";
         
-        try 
-        {  
-            String query = "SELECT * FROM books";
-            
-            Statement st = connection.createStatement();
+        try(Statement st = connection.createStatement()) 
+        {             
             ResultSet  rs = st.executeQuery(query);
              
             while (rs.next())
@@ -55,7 +53,7 @@ public class BooksDAO implements BookRepository
                 book.setBookId(rs.getInt("book_id"));
                 book.setAuthor(rs.getString("author"));
                 book.setTitle(rs.getString("title"));
-                book.setPublisher(rs.getString("publisher"));                 
+                book.setStatus(rs.getString("status"));                 
                 book.setPublicationYear(rs.getInt("publication_year"));
                 book.setISBN(rs.getString("ISBN"));
                  
@@ -72,13 +70,13 @@ public class BooksDAO implements BookRepository
     public void addToBooks(Book book)
     {
         
-        try (PreparedStatement ps = connection.prepareStatement("INSERT INTO books (title, author, publisher, ISBN, publication_year) VALUES(?,?,?,?,?)"))
+        try (PreparedStatement ps = connection.prepareStatement("INSERT INTO books (title, author, ISBN, publication_year, status) VALUES(?,?,?,?,?)"))
         {
             ps.setString(1, book.getTitle());
             ps.setString(2, book.getAuthor());
-            ps.setString(3, book.getPublisher());
-            ps.setString(4, book.getISBN());
-            ps.setInt(5, book.getPublicationYear());
+            ps.setString(3, book.getISBN());
+            ps.setInt(4, book.getPublicationYear());
+            ps.setString(5, book.getStatus());
              
             ps.executeUpdate();    
             
@@ -108,11 +106,7 @@ public class BooksDAO implements BookRepository
                 sql.append("author=?");
                 first = false;
             }
-            if (book.getPublisher() != null) {
-                if (!first) sql.append(", ");
-                sql.append("publisher=?");
-                first = false;
-            }
+            
             if (book.getPublicationYear() != 0) {
                 if (!first) sql.append(", ");
                 sql.append("publication_year=?");
@@ -134,9 +128,7 @@ public class BooksDAO implements BookRepository
             if (book.getAuthor() != null) {
                 ps.setString(row++, book.getAuthor());          
             }
-            if (book.getPublisher() != null) {
-                ps.setString(row++, book.getPublisher());
-            }          
+                  
             if (book.getPublicationYear() != 0) {
                 ps.setInt(row++, book.getPublicationYear());
             }
@@ -156,6 +148,17 @@ public class BooksDAO implements BookRepository
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void updateBookStatus(int bookId, String status)
+    {
+        try(PreparedStatement ps = connection.prepareStatement("UPDATE books SET status = ? WHERE book_id = ?")) {
+            ps.setString(1, status);
+            ps.setInt(2, bookId);
+            ps.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }           
     }
      @Override
     public void deleteBooks(int bookID)
@@ -185,11 +188,11 @@ public class BooksDAO implements BookRepository
     {
         
         List<Book> searchResult = new ArrayList<>();
-        String query = "SELECT * FROM books WHERE book_id LIKE ? OR title LIKE ? OR author LIKE ? OR publisher LIKE ? OR publication_year LIKE ? OR ISBN LIKE ?";
+        String query = "SELECT * FROM books WHERE book_id LIKE ? OR title LIKE ? OR author LIKE ? OR publication_year LIKE ? OR ISBN LIKE ?";
         
         try (PreparedStatement ps = connection.prepareStatement(query))
         {
-            for (int i = 1; i <= 6; i++) {
+            for (int i = 1; i <= 5; i++) {
                 ps.setString(i, "%" + keyword + "%");
             }
             
@@ -202,7 +205,6 @@ public class BooksDAO implements BookRepository
                     book.setBookId(rs.getInt("book_id"));
                     book.setAuthor(rs.getString("author"));
                     book.setTitle(rs.getString("title"));
-                    book.setPublisher(rs.getString("publisher"));
                     book.setPublicationYear(rs.getInt("publication_year"));
                     book.setISBN(rs.getString("ISBN"));
                     

@@ -96,7 +96,7 @@ public class home extends javax.swing.JFrame
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtPublisher = new javax.swing.JTextField();
+        txtStatus = new javax.swing.JTextField();
         txtTitle = new javax.swing.JTextField();
         txtBookId = new javax.swing.JTextField();
         txtAuthor = new javax.swing.JTextField();
@@ -124,11 +124,11 @@ public class home extends javax.swing.JFrame
         btnClearStudent = new javax.swing.JButton();
         btnDeleteStudent = new javax.swing.JButton();
         btnUpdateStudent = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableStudents = new javax.swing.JTable();
         txtSearchStudent = new javax.swing.JTextField();
         btnSearchStudent = new javax.swing.JButton();
         btnViewAllStudents = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableStudents = new javax.swing.JTable();
         IssueBookPanel = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -249,7 +249,7 @@ public class home extends javax.swing.JFrame
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel8.setText("Publisher:");
+        jLabel8.setText("ISBN:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
@@ -257,7 +257,9 @@ public class home extends javax.swing.JFrame
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel10.setText("ISBN:");
+        jLabel10.setText("Status:");
+
+        txtStatus.setEditable(false);
 
         txtBookId.setEditable(false);
         txtBookId.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
@@ -300,7 +302,7 @@ public class home extends javax.swing.JFrame
 
             },
             new String [] {
-                "BookID", "Title", "Author", "Publisher", "Publication Year", "ISBN"
+                "BookID", "Title", "Author", "Publication Year", "ISBN", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -343,13 +345,14 @@ public class home extends javax.swing.JFrame
             ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManageBooksPanelLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(ManageBooksPanelLayout.createSequentialGroup()
                         .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel9))
                         .addGap(57, 57, 57)
-                        .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(ManageBooksPanelLayout.createSequentialGroup()
                                 .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnSaveBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -358,30 +361,28 @@ public class home extends javax.swing.JFrame
                                 .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnUpdateBook, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnClearBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPublicationYear, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(ManageBooksPanelLayout.createSequentialGroup()
                         .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5))
-                        .addGap(99, 99, 99)
-                        .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBookId, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addComponent(txtPublicationYear, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addComponent(txtPublisher, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addComponent(txtAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addComponent(txtTitle))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtISBN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAuthor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBookId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ManageBooksPanelLayout.createSequentialGroup()
-                        .addGap(0, 159, Short.MAX_VALUE)
                         .addComponent(txtSearchBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearchBooks)
                         .addGap(18, 18, 18)
                         .addComponent(btnViewAllBooks))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -412,7 +413,7 @@ public class home extends javax.swing.JFrame
                         .addGap(32, 32, 32)
                         .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -420,7 +421,7 @@ public class home extends javax.swing.JFrame
                         .addGap(32, 32, 32)
                         .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSaveBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -436,7 +437,7 @@ public class home extends javax.swing.JFrame
 
         ManageBooksPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClearBook, btnDeleteBook, btnSaveBook, btnUpdateBook});
 
-        ManageBooksPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtPublicationYear, txtPublisher});
+        ManageBooksPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtPublicationYear, txtStatus});
 
         Parent.add(ManageBooksPanel, "card3");
 
@@ -495,34 +496,6 @@ public class home extends javax.swing.JFrame
             }
         });
 
-        tableStudents.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Student ID", "First Name", "Last Name", "Email Address"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tableStudents.setPreferredSize(new java.awt.Dimension(450, 0));
-        jScrollPane2.setViewportView(tableStudents);
-        if (tableStudents.getColumnModel().getColumnCount() > 0) {
-            tableStudents.getColumnModel().getColumn(0).setResizable(false);
-            tableStudents.getColumnModel().getColumn(1).setResizable(false);
-            tableStudents.getColumnModel().getColumn(2).setResizable(false);
-            tableStudents.getColumnModel().getColumn(3).setResizable(false);
-        }
-
         btnSearchStudent.setText("Search");
         btnSearchStudent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -537,6 +510,33 @@ public class home extends javax.swing.JFrame
             }
         });
 
+        tableStudents.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Student ID", "First Name", "Last name", "Email Address"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tableStudents);
+        if (tableStudents.getColumnModel().getColumnCount() > 0) {
+            tableStudents.getColumnModel().getColumn(0).setResizable(false);
+            tableStudents.getColumnModel().getColumn(1).setResizable(false);
+            tableStudents.getColumnModel().getColumn(2).setResizable(false);
+            tableStudents.getColumnModel().getColumn(3).setResizable(false);
+        }
+
         javax.swing.GroupLayout ManageStudentsPanelLayout = new javax.swing.GroupLayout(ManageStudentsPanel);
         ManageStudentsPanel.setLayout(ManageStudentsPanelLayout);
         ManageStudentsPanelLayout.setHorizontalGroup(
@@ -544,7 +544,7 @@ public class home extends javax.swing.JFrame
             .addGroup(ManageStudentsPanelLayout.createSequentialGroup()
                 .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManageStudentsPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(604, Short.MAX_VALUE)
                         .addComponent(txtSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearchStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -570,8 +570,8 @@ public class home extends javax.swing.JFrame
                                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(btnClearStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
 
@@ -613,8 +613,8 @@ public class home extends javax.swing.JFrame
                         .addGroup(ManageStudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDeleteStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnClearStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 183, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -651,7 +651,7 @@ public class home extends javax.swing.JFrame
 
             },
             new String [] {
-                "BookID", "Title", "Author", "Publisher", "Publication Year", "ISBN"
+                "BookID", "Title", "Author", "Publication Year", "ISBN", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -989,12 +989,7 @@ public class home extends javax.swing.JFrame
     }//GEN-LAST:event_btnIssueBookActionPerformed
 
     private void btnClearIssueBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearIssueBookActionPerformed
-        txtIssueToStudentId.setText("");
-        txtIssueBookId.setText("");
-        txtIssueDate.setText("");
-        txtDueDate.setText("");
-        txtIssueBookTitle.setText("");
-        txtIssueBookAuthor.setText("");
+        clearIssueBookDetails();
     }//GEN-LAST:event_btnClearIssueBookActionPerformed
 
     private void btnReturnBookPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnBookPanelActionPerformed
@@ -1053,7 +1048,7 @@ public class home extends javax.swing.JFrame
     private Book getBookDetails() {
         String title = txtTitle.getText().trim();
         String author = txtAuthor.getText().trim();
-        String publisher = txtPublisher.getText().trim();
+        String publisher = txtStatus.getText().trim();
         String isbn = txtISBN.getText().trim();
         String publicationYearStr = txtPublicationYear.getText().trim();
         
@@ -1111,7 +1106,11 @@ public class home extends javax.swing.JFrame
             
             if ( studentMan.studentExistsByStudentId(issueBook.getStudentId())){
                     issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssueDate(), issueBook.getDueDate());
+                    bookMan.issueBookStatus(issueBook.getBookId());
                     loadBooksReturnBooks();
+                    loadBooksTableBooks();
+                    loadBooksTableIssueBooks();
+                    clearIssueBookDetails();
                     JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
             } 
             else {
@@ -1138,7 +1137,7 @@ public class home extends javax.swing.JFrame
             model.setRowCount(0);
             
             for (Book book : searchResult) {
-                model.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getPublisher(), book.getPublicationYear(), book.getISBN()});
+                model.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getStatus(), book.getPublicationYear(), book.getISBN()});
             }
         }             
     }
@@ -1169,7 +1168,7 @@ public class home extends javax.swing.JFrame
                 return;
             }
             
-            bookMan.addNewBook(newBook.getAuthor(), newBook.getTitle(), newBook.getPublisher(), newBook.getPublicationYear(), newBook.getISBN());            
+            bookMan.addNewBook(newBook.getAuthor(), newBook.getTitle(), newBook.getStatus(), newBook.getPublicationYear(), newBook.getISBN());            
             loadBooksTableBooks();          
             clearBookDetails();            
             JOptionPane.showMessageDialog(this, "Book added successfully.");
@@ -1213,7 +1212,7 @@ public class home extends javax.swing.JFrame
            txtBookId.setText("AUTO-GENERATED");
            txtTitle.setText("");
            txtAuthor.setText("");
-           txtPublisher.setText("");
+           txtStatus.setText("");
            txtISBN.setText("");
            txtPublicationYear.setText("");   
            btnSaveStudent.setEnabled(true);
@@ -1227,6 +1226,14 @@ public class home extends javax.swing.JFrame
         btnSaveStudent.setEnabled(true);
     }
     
+    private void clearIssueBookDetails() {
+        txtIssueToStudentId.setText("");
+        txtIssueBookId.setText("");
+        txtIssueDate.setText("");
+        txtDueDate.setText("");
+        txtIssueBookTitle.setText("");
+        txtIssueBookAuthor.setText("");
+    }
     private void deleteBook() {
         try {
             int bookId = Integer.parseInt(txtBookId.getText());        
@@ -1252,7 +1259,10 @@ public class home extends javax.swing.JFrame
             int bookId = Integer.parseInt(txtBookIdReturn.getText());
             
             issueBookMan.returnBook(bookId, studentId);
+            bookMan.returnBookStatus(bookId);
             loadBooksReturnBooks();
+            loadBooksTableBooks();
+            loadBooksTableIssueBooks();
             JOptionPane.showMessageDialog(this, "Book returned successfully");
             
         } catch(Exception e) {
@@ -1294,7 +1304,7 @@ public class home extends javax.swing.JFrame
             model.setRowCount(0);
             
             for (Book book : books) {
-                model.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getPublisher(), book.getPublicationYear(), book.getISBN()});
+                model.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getPublicationYear(), book.getISBN(), book.getStatus()});
             }
             
             } catch (Exception e) {
@@ -1309,7 +1319,7 @@ public class home extends javax.swing.JFrame
             tableStudentsModel.setRowCount(0);
             
             for (Student student : students) {
-                tableStudentsModel.addRow(new Object[]{student.getStudentId(), student.getFirstName(), student.getLastName(), student.getEmail()});           
+                tableStudentsModel.addRow(new Object[]{student.getStudentId(), student.getFirstName(), student.getLastName(), student.getEmail()});
             }  
             
             } catch (Exception e) {
@@ -1349,9 +1359,9 @@ public class home extends javax.swing.JFrame
         txtBookId.setText(tableBookModel.getValueAt(selectedRow, 0).toString());
         txtTitle.setText(tableBookModel.getValueAt(selectedRow, 1).toString());
         txtAuthor.setText(tableBookModel.getValueAt(selectedRow, 2).toString());
-        txtPublisher.setText(tableBookModel.getValueAt(selectedRow, 3).toString());
-        txtPublicationYear.setText(tableBookModel.getValueAt(selectedRow, 4).toString());
-        txtISBN.setText(tableBookModel.getValueAt(selectedRow, 5).toString());
+        txtStatus.setText(tableBookModel.getValueAt(selectedRow, 5).toString());
+        txtPublicationYear.setText(tableBookModel.getValueAt(selectedRow, 3).toString());
+        txtISBN.setText(tableBookModel.getValueAt(selectedRow, 4).toString());
         btnSaveBook.setEnabled(false);
         btnDeleteBook.setEnabled(true);
         btnUpdateBook.setEnabled(true);
@@ -1370,12 +1380,11 @@ public class home extends javax.swing.JFrame
     
     private void tableStudentsMouseClicked(MouseEvent evt) {
         int selectedRow = tableStudents.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) tableStudents.getModel();
         
-        txtStudentId.setText(model.getValueAt(selectedRow, 0).toString());
-        txtFirstName.setText(model.getValueAt(selectedRow, 1).toString());
-        txtLastName.setText(model.getValueAt(selectedRow, 2).toString());
-        txtEmail.setText(model.getValueAt(selectedRow, 3).toString());
+        txtStudentId.setText(tableStudentsModel.getValueAt(selectedRow, 0).toString());
+        txtFirstName.setText(tableStudentsModel.getValueAt(selectedRow, 1).toString());
+        txtLastName.setText(tableStudentsModel.getValueAt(selectedRow, 2).toString());
+        txtEmail.setText(tableStudentsModel.getValueAt(selectedRow, 3).toString());
         btnSaveStudent.setEnabled(false);
     }
     /**
@@ -1487,9 +1496,9 @@ public class home extends javax.swing.JFrame
     private javax.swing.JTextField txtIssuedDateReturn;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtPublicationYear;
-    private javax.swing.JTextField txtPublisher;
     private javax.swing.JTextField txtSearchBooks;
     private javax.swing.JTextField txtSearchStudent;
+    private javax.swing.JTextField txtStatus;
     private javax.swing.JTextField txtStudentId;
     private javax.swing.JTextField txtStudentIdReturn;
     private javax.swing.JTextField txtTitle;

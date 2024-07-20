@@ -51,5 +51,12 @@ public class BookManager
         
         return searchResult;
     }
-            
+    
+    public void issueBookStatus(int bookId) {
+        bookDAO.updateBookStatus(bookId, "borrowed");
+    }
+    
+    public void returnBookStatus(int bookId) {
+        bookDAO.updateBookStatus(bookId, "available");
+    }
 }

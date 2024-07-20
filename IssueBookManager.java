@@ -12,15 +12,15 @@ import java.util.List;
  */
 public class IssueBookManager 
 {
-    private IssueBookDAO issueBookDAO;
+    private final IssueBookDAO issueBookDAO;
 
     public IssueBookManager(IssueBookDAO issuedBookDAO) {
         this.issueBookDAO = issuedBookDAO;
     }
     
-    public void issueBook(int book_id,int student_id, LocalDate issued_date, LocalDate return_date)
+    public void issueBook(int bookId,int student_id, LocalDate issueDate, LocalDate returnDate)
     {
-        issueBookDAO.addToIssuedBooks(new IssueBook(book_id, student_id, issued_date, return_date));
+        issueBookDAO.addToIssuedBooks(new IssueBook(bookId, student_id, issueDate, returnDate));
     }
     
     public void returnBook(int bookId, int studentId)

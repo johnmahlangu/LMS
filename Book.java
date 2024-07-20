@@ -13,18 +13,18 @@ public class Book
     private String author;
     private String title;   
     private int publicationYear;
-    private String publisher;
+    private String status;
     private String ISBN;
     private int bookId;
 
     public Book()
     {}
     
-    public Book(String author, String title, String publisher, int publicationYear, String ISBN) {
+    public Book(String author, String title, String status, int publicationYear, String ISBN) {
         this.author = author;
         this.title = title;
         this.publicationYear = publicationYear;
-        this.publisher = publisher;
+        this.status = status;
         this.ISBN = ISBN;
     }
 
@@ -36,12 +36,12 @@ public class Book
         this.bookId = bookID;
     }
     
-    public String getPublisher() {
-        return publisher;
+    public String getStatus() {
+        return status;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getISBN() {
