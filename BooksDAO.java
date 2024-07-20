@@ -159,7 +159,24 @@ public class BooksDAO implements BookRepository
         catch (SQLException e) {
             e.printStackTrace();
         }           
-    }   
+    }  
+    @Override
+    public String getBookStatus(int bookId)
+    {
+        String status = null;
+        
+        try (PreparedStatement ps = connection.prepareStatement("SELECT status FROM books WHERE book_id = ?")) {
+            ps.setInt(1, bookId);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                status = rs.getString("status");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
     @Override
     public List<Book> displayAvailableBooks() {
         List<Book> books = new ArrayList<>();

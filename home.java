@@ -4,6 +4,7 @@
  */
 package com.servlet;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
@@ -646,6 +647,16 @@ public class home extends javax.swing.JFrame
 
         txtIssueBookId.setEditable(false);
 
+        txtDueDate.setText("yyyy-mm-dd");
+        txtDueDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDueDateFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDueDateFocusLost(evt);
+            }
+        });
+
         tableIssueBook.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -761,15 +772,14 @@ public class home extends javax.swing.JFrame
                             .addComponent(jLabel16)
                             .addComponent(txtIssueBookAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
-                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(IssueBookPanelLayout.createSequentialGroup()
-                                .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtIssueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13))
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel14))
-                            .addComponent(txtDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIssueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
                         .addGap(43, 43, 43)
+                        .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(txtDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
                         .addGroup(IssueBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnIssueBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnClearIssueBook))
@@ -777,6 +787,8 @@ public class home extends javax.swing.JFrame
         );
 
         IssueBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClearIssueBook, btnIssueBook});
+
+        IssueBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtDueDate, txtIssueBookAuthor, txtIssueDate});
 
         Parent.add(IssueBookPanel, "card4");
 
@@ -875,31 +887,30 @@ public class home extends javax.swing.JFrame
             .addGroup(ReturnBookPanelLayout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
                     .addGroup(ReturnBookPanelLayout.createSequentialGroup()
-                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel21)
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel18)
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel23))
-                            .addGroup(ReturnBookPanelLayout.createSequentialGroup()
-                                .addComponent(txtStudentIdReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(txtBookIdReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(txtIssuedDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(txtDueDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72)
-                                .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnReturnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnClearReturnBook))))
-                        .addGap(194, 194, 194)))
-                .addGap(6, 6, 6))
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtStudentIdReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addGap(43, 43, 43)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtBookIdReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21))
+                        .addGap(43, 43, 43)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIssuedDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))
+                        .addGap(43, 43, 43)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDueDateReturn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23))
+                        .addGap(72, 72, 72)
+                        .addGroup(ReturnBookPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnReturnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClearReturnBook))
+                        .addGap(200, 200, 200))
+                    .addGroup(ReturnBookPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4)
+                        .addGap(6, 6, 6))))
         );
 
         ReturnBookPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClearReturnBook, btnReturnBook});
@@ -1008,6 +1019,18 @@ public class home extends javax.swing.JFrame
         txtIssueDate.setText("");
         txtIssueBookId.setText("");
     }//GEN-LAST:event_btnClearReturnBookActionPerformed
+
+    private void txtDueDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDueDateFocusGained
+        if (txtDueDate.getText().equals("yyyy-mm-dd")) {
+            txtDueDate.setText("");
+        }
+    }//GEN-LAST:event_txtDueDateFocusGained
+
+    private void txtDueDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDueDateFocusLost
+        if (txtDueDate.getText().equals("")) {
+            txtDueDate.setText("yyyy-mm-dd");
+        }
+    }//GEN-LAST:event_txtDueDateFocusLost
     
     private Student getStudentDetails() {
         String firstName = txtFirstName.getText().trim();
@@ -1082,19 +1105,32 @@ public class home extends javax.swing.JFrame
     
     private IssueBook getIssueBookDetails()
     {
-        int studentId = Integer.parseInt(txtIssueToStudentId.getText());
+        String studentIdStr = txtIssueToStudentId.getText().trim();
         int bookId = Integer.parseInt(txtIssueBookId.getText());
-        LocalDate issueDate; 
+        LocalDate issueDate = LocalDate.parse(txtIssueDate.getText()); 
+        
+        if (studentIdStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please provide student ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+        
+        int studentId;
         LocalDate dueDate;
-           
+        
         try {           
-            issueDate = LocalDate.parse(txtIssueDate.getText()); 
-            dueDate = LocalDate.parse(txtDueDate.getText());
-    
+            dueDate = LocalDate.parse(txtDueDate.getText());    
         } catch (DateTimeParseException e) {
-            JOptionPane.showMessageDialog(this, "Please enter valid date.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please enter valid date in the format YYYY-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
             return null;
         } 
+        
+        try {
+            studentId = Integer.parseInt(studentIdStr);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter valid numeric values for Student ID.", "Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+        
         return new IssueBook(bookId, studentId, issueDate, dueDate);
     }
     
@@ -1235,7 +1271,13 @@ public class home extends javax.swing.JFrame
     }
     private void deleteBook() {
         try {
-            int bookId = Integer.parseInt(txtBookId.getText());        
+            int bookId = Integer.parseInt(txtBookId.getText());
+            String status = bookMan.bookStatus(bookId);
+            
+            if (status.equals("borrowed")) {
+                JOptionPane.showMessageDialog(this, "Cannot delete borrowed book.");
+                return;
+            }
             int dialogResult = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete book with book ID: " + bookId, "Confirmation", JOptionPane.YES_NO_OPTION);
             
             if (dialogResult == JOptionPane.YES_OPTION) {

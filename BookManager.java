@@ -60,6 +60,10 @@ public class BookManager
         bookDAO.updateBookStatus(bookId, "available");
     }
     
+    public String bookStatus(int bookId) {
+        return bookDAO.getBookStatus(bookId);
+    }
+    
     public List<Book> displayAvailableBooks() {
         return bookDAO.displayAvailableBooks();
     }
