@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface BookRepository {
     List<Book> readFromBooks();
+    List<Book> displayAvailableBooks();
     void updateBookStatus(int bookId, String status);
     public boolean bookExistsByISBN(String isbn);
     void addToBooks(Book book);

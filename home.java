@@ -374,7 +374,7 @@ public class home extends javax.swing.JFrame
                             .addComponent(txtAuthor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtBookId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ManageBooksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(ManageBooksPanelLayout.createSequentialGroup()
                         .addComponent(txtSearchBooks, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,7 +382,7 @@ public class home extends javax.swing.JFrame
                         .addComponent(btnSearchBooks)
                         .addGap(18, 18, 18)
                         .addComponent(btnViewAllBooks))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -651,11 +651,11 @@ public class home extends javax.swing.JFrame
 
             },
             new String [] {
-                "BookID", "Title", "Author", "Publication Year", "ISBN", "Status"
+                "BookID", "Title", "Author", "Publication Year", "ISBN"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -669,7 +669,6 @@ public class home extends javax.swing.JFrame
             tableIssueBook.getColumnModel().getColumn(2).setResizable(false);
             tableIssueBook.getColumnModel().getColumn(3).setResizable(false);
             tableIssueBook.getColumnModel().getColumn(4).setResizable(false);
-            tableIssueBook.getColumnModel().getColumn(5).setResizable(false);
         }
 
         btnClearIssueBook.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1105,13 +1104,13 @@ public class home extends javax.swing.JFrame
             IssueBook issueBook = getIssueBookDetails();
             
             if ( studentMan.studentExistsByStudentId(issueBook.getStudentId())){
-                    issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssueDate(), issueBook.getDueDate());
-                    bookMan.issueBookStatus(issueBook.getBookId());
-                    loadBooksReturnBooks();
-                    loadBooksTableBooks();
-                    loadBooksTableIssueBooks();
-                    clearIssueBookDetails();
-                    JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
+                issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssueDate(), issueBook.getDueDate());
+                bookMan.issueBookStatus(issueBook.getBookId());
+                loadBooksReturnBooks();
+                loadBooksTableBooks();
+                loadBooksTableIssueBooks();
+                clearIssueBookDetails();
+                JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
             } 
             else {
                 System.out.println("student ID does not exist.");
@@ -1288,23 +1287,33 @@ public class home extends javax.swing.JFrame
         }
     }
     
-    private void loadBooksTableIssueBooks() {
-        loadBooksIntoTable(tableIssueBookModel);
+    private void loadBooksTableIssueBooks() 
+    {
+        try {
+            List<Book> books = bookMan.displayAvailableBooks();
+            
+            tableIssueBookModel.setRowCount(0);
+            
+            
+            for (Book book : books) {
+                tableIssueBookModel.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getPublicationYear(), book.getISBN()});
+            }
+            
+            } catch (Exception e) {
+                e.printStackTrace();        
+        }   
     }
     
-    private void loadBooksTableBooks() {
-        loadBooksIntoTable(tableBookModel);
-    }
-    
-    private void loadBooksIntoTable(DefaultTableModel model) 
+    private void loadBooksTableBooks() 
     {
         try {
             List<Book> books = bookMan.displayAllBooks();
-               
-            model.setRowCount(0);
+            
+            tableBookModel.setRowCount(0);
+            
             
             for (Book book : books) {
-                model.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getPublicationYear(), book.getISBN(), book.getStatus()});
+                tableBookModel.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getPublicationYear(), book.getISBN(), book.getStatus()});
             }
             
             } catch (Exception e) {

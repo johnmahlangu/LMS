@@ -59,4 +59,8 @@ public class BookManager
     public void returnBookStatus(int bookId) {
         bookDAO.updateBookStatus(bookId, "available");
     }
+    
+    public List<Book> displayAvailableBooks() {
+        return bookDAO.displayAvailableBooks();
+    }
 }

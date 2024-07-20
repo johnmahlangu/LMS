@@ -159,6 +159,29 @@ public class BooksDAO implements BookRepository
         catch (SQLException e) {
             e.printStackTrace();
         }           
+    }   
+    @Override
+    public List<Book> displayAvailableBooks() {
+        List<Book> books = new ArrayList<>();
+        
+        try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM books WHERE status = 'available'")) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Book book = new Book();
+                
+                book.setBookId(rs.getInt("book_id"));
+                book.setAuthor(rs.getString("author"));
+                book.setTitle(rs.getString("title"));
+                book.setStatus(rs.getString("status"));                 
+                book.setPublicationYear(rs.getInt("publication_year"));
+                book.setISBN(rs.getString("ISBN"));
+                 
+                books.add(book);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
     }
      @Override
     public void deleteBooks(int bookID)
