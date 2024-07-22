@@ -264,6 +264,7 @@ public class home extends javax.swing.JFrame
         jLabel10.setText("Status:");
 
         txtStatus.setEditable(false);
+        txtStatus.setText("available");
 
         txtBookId.setEditable(false);
         txtBookId.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
@@ -1045,10 +1046,7 @@ public class home extends javax.swing.JFrame
     }//GEN-LAST:event_btnReturnBookActionPerformed
 
     private void btnClearReturnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearReturnBookActionPerformed
-        txtIssueToStudentId.setText("");
-        txtIssueBookId.setText("");
-        txtIssueDate.setText("");
-        txtIssueBookId.setText("");
+        clearReturnBookDetails();
     }//GEN-LAST:event_btnClearReturnBookActionPerformed
 
     private void txtDueDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDueDateFocusGained
@@ -1093,7 +1091,7 @@ public class home extends javax.swing.JFrame
         try {
             Student newStudent = getStudentDetails();
                         
-            if (studentMan.studentExistsByEmail(newStudent.getEmail())) {
+            if (studentMan.doesStudentExistByEmail(newStudent.getEmail())) {
                 JOptionPane.showMessageDialog(this, "Email address already exists.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }     
@@ -1178,9 +1176,9 @@ public class home extends javax.swing.JFrame
         try {
             IssueBook issueBook = getIssueBookDetails();
             
-            if ( studentMan.studentExistsByStudentId(issueBook.getStudentId())){
+            if ( studentMan.doesStudentExistsByStudentId(issueBook.getStudentId())){
                 issueBookMan.issueBook(issueBook.getBookId(), issueBook.getStudentId(), issueBook.getIssueDate(), issueBook.getDueDate());
-                bookMan.issueBookStatus(issueBook.getBookId());
+                bookMan.updateIssuedBookStatus(issueBook.getBookId());
                 loadBooksReturnBooks();
                 loadBooksTableBooks();
                 loadBooksTableIssueBooks();
@@ -1188,8 +1186,8 @@ public class home extends javax.swing.JFrame
                 JOptionPane.showMessageDialog(this, "Book issued to student ID: " + issueBook.getStudentId() + ".");
             } 
             else {
-                System.out.println("student ID does not exist.");
-                JOptionPane.showMessageDialog(this, "student ID does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                System.out.println("Student ID does not exist.");
+                JOptionPane.showMessageDialog(this, "Student ID does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
         } 
         catch (Exception e) {
@@ -1244,7 +1242,7 @@ public class home extends javax.swing.JFrame
         try {
             Book newBook = getBookDetails();
             
-            if (bookMan.bookExistsByISBN(newBook.getISBN())) {
+            if (bookMan.doesBookExistsByISBN(newBook.getISBN())) {
                 JOptionPane.showMessageDialog(this, "ISBN already exists.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -1263,7 +1261,7 @@ public class home extends javax.swing.JFrame
             Book updatedBook = getBookDetails();
             int bookId = Integer.parseInt(txtBookId.getText());
             
-            bookMan.bookUpdate(bookId, updatedBook);           
+            bookMan.updateBook(bookId, updatedBook);           
             loadBooksTableBooks();
             loadBooksTableIssueBooks();
             clearBookDetails();
@@ -1280,7 +1278,7 @@ public class home extends javax.swing.JFrame
             Student updatedStudent = getStudentDetails();
             int studentId = Integer.parseInt(txtStudentId.getText());
             
-            studentMan.studentUpdate(studentId, updatedStudent);            
+            studentMan.updateStudent(studentId, updatedStudent);            
             loadStudents();
             clearStudentDetails();
             JOptionPane.showMessageDialog(this, "Student updated successfully.");
@@ -1293,7 +1291,7 @@ public class home extends javax.swing.JFrame
            txtBookId.setText("AUTO-GENERATED");
            txtTitle.setText("");
            txtAuthor.setText("");
-           txtStatus.setText("");
+           txtStatus.setText("available");
            txtISBN.setText("");
            txtPublicationYear.setText("");   
            btnSaveStudent.setEnabled(true);
@@ -1315,10 +1313,18 @@ public class home extends javax.swing.JFrame
         txtIssueBookTitle.setText("");
         txtIssueBookAuthor.setText("");
     }
+    
+    private void clearReturnBookDetails() {
+        txtStudentIdReturn.setText("");
+        txtBookIdReturn.setText("");
+        txtIssuedDateReturn.setText("");
+        txtDueDateReturn.setText("");
+    }
+    
     private void deleteBook() {
         try {
             int bookId = Integer.parseInt(txtBookId.getText());
-            String status = bookMan.bookStatus(bookId);
+            String status = bookMan.getBookStatus(bookId);
             
             if (status.equals("borrowed")) {
                 JOptionPane.showMessageDialog(this, "Cannot delete borrowed book.");
@@ -1346,11 +1352,11 @@ public class home extends javax.swing.JFrame
             int bookId = Integer.parseInt(txtBookIdReturn.getText());
             
             issueBookMan.returnBook(bookId, studentId);
-            bookMan.returnBookStatus(bookId);
+            bookMan.updateReturnedBookStatus(bookId);
             loadBooksReturnBooks();
             loadBooksTableBooks();
             loadBooksTableIssueBooks();
-            JOptionPane.showMessageDialog(this, "Book returned successfully");
+            JOptionPane.showMessageDialog(this, "Book returned successfully.");
             
         } catch(Exception e) {
             e.printStackTrace();
