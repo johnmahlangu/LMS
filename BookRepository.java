@@ -11,13 +11,13 @@ import java.util.List;
  * @author Thokozani Mahlangu
  */
 public interface BookRepository {
-    List<Book> readFromBooks();
-    String getBookStatus(int bookId);
-    List<Book> displayAvailableBooks();
+    List<Book> getAllBooks();
+    String getBookStatusById(int bookId);
+    List<Book> getAvailableBooks();
     void updateBookStatus(int bookId, String status);
-    public boolean bookExistsByISBN(String isbn);
-    void addToBooks(Book book);
+    public boolean doesBookExistsByISBN(String isbn);
+    void addBook(Book book);
     void updateBooks(int bookID, Book updatedBook);
-    void deleteBooks(int bookID);
-    List<Book> searchBooks(String keyword);
+    void deleteBookById(int bookID);
+    List<Book> searchBooksByKeyword(String keyword);
 }

@@ -11,15 +11,20 @@ import java.sql.*;
  */
 public class BooksDAO implements BookRepository
 {   
-    private Connection connection;
+    private final Connection connection;
     
     public BooksDAO()
     {
         connection = ConnectionDB.getInstance().getConnection();
     }
     
+    /**
+     * Checks if a book exists in the database by its ISBN.
+     * @param isbn The ISBN of the book to check.
+     * @return true if the book exists, false otherwise.
+     */
     @Override
-    public boolean bookExistsByISBN(String isbn)
+    public boolean doesBookExistsByISBN(String isbn)
     {
         String query = "SELECT COUNT(*) FROM books WHERE ISBN = ?";
         
@@ -31,13 +36,17 @@ public class BooksDAO implements BookRepository
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error determining whether a book exists by ISBN: " + e);
         }
         return false;
     }
     
+    /**
+     * Retrieves all books from the database.
+     * @return A list of all books.
+     */
     @Override
-    public List<Book> readFromBooks()
+    public List<Book> getAllBooks()
     {   
         List<Book> books = new ArrayList<>();
         String query = "SELECT * FROM books";
@@ -47,27 +56,22 @@ public class BooksDAO implements BookRepository
             ResultSet  rs = st.executeQuery(query);
              
             while (rs.next())
-            {
-                Book book = new Book();
-                
-                book.setBookId(rs.getInt("book_id"));
-                book.setAuthor(rs.getString("author"));
-                book.setTitle(rs.getString("title"));
-                book.setStatus(rs.getString("status"));                 
-                book.setPublicationYear(rs.getInt("publication_year"));
-                book.setISBN(rs.getString("ISBN"));
-                 
-                books.add(book);
+            {    
+                books.add(mapResultSetToBook(rs));
             }
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            System.err.println("Error getting all books: " + e);
         }
         return books;
      }
+    /**
+     * Add a new book to the database.
+     * @param book The book to add
+     */
     @Override
-    public void addToBooks(Book book)
+    public void addBook(Book book)
     {
         
         try (PreparedStatement ps = connection.prepareStatement("INSERT INTO books (title, author, ISBN, publication_year, status) VALUES(?,?,?,?,?)"))
@@ -79,21 +83,23 @@ public class BooksDAO implements BookRepository
             ps.setString(5, book.getStatus());
              
             ps.executeUpdate();    
-            
-            System.out.println("Book added succesfully.");
         }
         catch (SQLException e) 
         {
             System.err.println("Error adding book: " + e);
         }
     }
+    /**
+     * Updates the details of an existing book in the database.
+     * @param bookId The ID of the book to update.
+     * @param book The book object containing updated details.
+     */
     @Override
     public void updateBooks(int bookId, Book book) 
     {                 
         try
         {
-            PreparedStatement ps = null;
-            
+            PreparedStatement ps = null;         
             StringBuilder sql = new StringBuilder("UPDATE books SET ");
             boolean first = true;
             
@@ -149,84 +155,100 @@ public class BooksDAO implements BookRepository
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Updates the status(borrowed or available) in the database.
+     * @param bookId The ID of the book to update.
+     * @param status The new status of the book.
+     */
+    @Override
     public void updateBookStatus(int bookId, String status)
     {
-        try(PreparedStatement ps = connection.prepareStatement("UPDATE books SET status = ? WHERE book_id = ?")) {
+        String query = "UPDATE books SET status = ? WHERE book_id = ?";
+        
+        try(PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setString(1, status);
             ps.setInt(2, bookId);
             ps.executeUpdate();
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error updating book status: " + e);
         }           
     }  
+    
+    /**
+     * Retrieves the status of a book by its ID.
+     * @param bookId The ID of the book.
+     * @return The status of the book.
+     */
     @Override
-    public String getBookStatus(int bookId)
+    public String getBookStatusById(int bookId)
     {
         String status = null;
+        String query = "SELECT status FROM books WHERE book_id = ?";
         
-        try (PreparedStatement ps = connection.prepareStatement("SELECT status FROM books WHERE book_id = ?")) {
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setInt(1, bookId);
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
                 status = rs.getString("status");
             }
+            System.out.println("Book status is: " + status);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error getting book status: " + e);
         }
         return status;
     }
+    
+    /**
+     * Retrieves all available books from the database.
+     * @return A list of available books.
+     */
     @Override
-    public List<Book> displayAvailableBooks() {
+    public List<Book> getAvailableBooks() {
         List<Book> books = new ArrayList<>();
+        String query = "SELECT * FROM books WHERE status = 'available'";
         
-        try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM books WHERE status = 'available'")) {
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Book book = new Book();
-                
-                book.setBookId(rs.getInt("book_id"));
-                book.setAuthor(rs.getString("author"));
-                book.setTitle(rs.getString("title"));
-                book.setStatus(rs.getString("status"));                 
-                book.setPublicationYear(rs.getInt("publication_year"));
-                book.setISBN(rs.getString("ISBN"));
-                 
-                books.add(book);
+            while (rs.next()) 
+            {                
+                books.add(mapResultSetToBook(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return books;
     }
-     @Override
-    public void deleteBooks(int bookID)
+    /**
+     * Deletes a book from the database by its ID.
+     * @param bookId The ID of the book to delete.
+     */
+    @Override
+    public void deleteBookById(int bookId)
     {
-         
-        try (PreparedStatement ps = connection.prepareStatement("DELETE FROM books WHERE book_id=?")) 
+        String query = "DELETE FROM books WHERE book_id=?";
+        
+        try (PreparedStatement ps = connection.prepareStatement(query)) 
         {
-            ps.setInt(1, bookID);
+            ps.setInt(1, bookId);
 
-            int rowsDeleted = ps.executeUpdate();
-
-            if (rowsDeleted > 0) {
-                System.out.println("Book deleted successfully.");
-            } 
-            else 
-            {
-                System.out.println("No book found with the given ID.");
-            }
+            ps.executeUpdate();
         } 
         catch (SQLException e)         
         {
-            e.printStackTrace();
+            System.out.println("Error deleting book: " + e);
         }
-    }      
-     @Override
-    public List<Book> searchBooks(String keyword)
-    {
-        
+    }
+    /**
+     * Searches fro books in the database that match the given keyword.
+     * @param keyword The keyword to search for.
+     * @return A list of books matching the keyword.
+     */
+    @Override
+    public List<Book> searchBooksByKeyword(String keyword)
+    {   
         List<Book> searchResult = new ArrayList<>();
         String query = "SELECT * FROM books WHERE book_id LIKE ? OR title LIKE ? OR author LIKE ? OR publication_year LIKE ? OR ISBN LIKE ? OR status LIKE ?";
         
@@ -240,30 +262,32 @@ public class BooksDAO implements BookRepository
             {
                 while (rs.next())
                 {
-                    Book book = new Book();
-                    
-                    book.setBookId(rs.getInt("book_id"));
-                    book.setAuthor(rs.getString("author"));
-                    book.setTitle(rs.getString("title"));
-                    book.setPublicationYear(rs.getInt("publication_year"));
-                    book.setISBN(rs.getString("ISBN"));
-                    book.setStatus(rs.getString("status"));
-                    
-                    searchResult.add(book);
+                    searchResult.add(mapResultSetToBook(rs));
                 }
             }       
-            if (searchResult.isEmpty()) 
-            {
-                System.out.println("No books found matching the search criteria.");
-            }
-            else 
-            {
-                System.out.println("Books with search criteria found.");
-            }
         }
         catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println("Error searching for books: " + e);
         }
         return searchResult;
+    }
+    /**
+     * Maps a ResultSet row to a book object.
+     * @param rs The resultSet to map.
+     * @return A book object.
+     * @throws SQLException if a SQL error occurs
+     */
+    private Book mapResultSetToBook(ResultSet rs) throws SQLException
+    {
+        Book book = new Book();
+        
+        book.setBookId(rs.getInt("book_id"));
+        book.setAuthor(rs.getString("author"));
+        book.setTitle(rs.getString("title"));
+        book.setPublicationYear(rs.getInt("publication_year"));
+        book.setISBN(rs.getString("ISBN"));
+        book.setStatus(rs.getString("status"));
+        
+        return book;
     }
 }
