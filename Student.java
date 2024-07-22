@@ -6,7 +6,7 @@ package com.servlet;
 
 /**
  *
- * @author Thokozani Mahlangu
+ * @author Jonas Mahlangu
  */
 public class Student 
 {    

@@ -7,7 +7,7 @@ package com.servlet;
 import java.time.LocalDate;
 /**
  *
- * @author Thokozani Mahlangu
+ * @author Jonas Mahlangu
  */
 public class IssueBook 
 {

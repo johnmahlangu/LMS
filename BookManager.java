@@ -7,7 +7,7 @@ package com.servlet;
 import java.util.List;
 
 /**
- *
+ * Book service class for managing books.
  * @author Thokozani Mahlangu
  */
 public class BookManager 
@@ -18,53 +18,48 @@ public class BookManager
         this.bookDAO = bookDAO;
     }
     
-    public boolean bookExistsByISBN(String isbn)
+    public boolean doesBookExistsByISBN(String isbn)
     {
-        return bookDAO.bookExistsByISBN(isbn);
+        return bookDAO.doesBookExistByISBN(isbn);
     }
                        
     public void addNewBook(String author, String title, String genre, int publicationYear, String ISBN)
-    {
-        Book newBook = new Book(author, title, genre, publicationYear, ISBN);      
-        bookDAO.addToBooks(newBook);
+    {      
+        bookDAO.addBook(new Book(author, title, genre, publicationYear, ISBN));
     }
     
     public List<Book> displayAllBooks()
-    {
-        List<Book> books = bookDAO.readFromBooks();    
-        return books;
+    {         
+        return bookDAO.getAllBooks(); 
     }
         
-    public void bookUpdate(int bookID, Book book)
+    public void updateBook(int bookID, Book book)
     {
         bookDAO.updateBooks(bookID, book);
     }
     
     public void deleteBook(int bookID)
     {
-        bookDAO.deleteBooks(bookID);
+        bookDAO.deleteBookById(bookID);
     }
     
-    public List<Book> searchBook(String keyword) 
-    {
-        List<Book> searchResult = bookDAO.searchBooks(keyword);
-        
-        return searchResult;
+    public List<Book> searchBook(String keyword) {      
+        return bookDAO.searchBooksByKeyword(keyword);
     }
     
-    public void issueBookStatus(int bookId) {
+    public void updateIssuedBookStatus(int bookId) {
         bookDAO.updateBookStatus(bookId, "borrowed");
     }
     
-    public void returnBookStatus(int bookId) {
+    public void updateReturnedBookStatus(int bookId) {
         bookDAO.updateBookStatus(bookId, "available");
     }
     
-    public String bookStatus(int bookId) {
-        return bookDAO.getBookStatus(bookId);
+    public String getBookStatus(int bookId) {
+        return bookDAO.getBookStatusById(bookId);
     }
     
     public List<Book> displayAvailableBooks() {
-        return bookDAO.displayAvailableBooks();
+        return bookDAO.getAvailableBooks();
     }
 }

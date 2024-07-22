@@ -6,19 +6,26 @@ package com.servlet;
 import java.sql.*;
 import java.util.*;
 /**
- *
- * @author Thokozani Mahlangu
+ * DAO class for managing students.
+ * Implements StudentRepository interface.
+ * Provides methods for performing CRUD operations on books, searching for books etc..
+ * @author Jonas Mahlangu
  */
 public class StudentsDAO implements StudentRepository
 {  
     private Connection connection;
     
     public StudentsDAO() {
-        connection = ConnectionDB.getInstance().getConnection();
+        connection = ConnectionDB.getInstance().getConnection(); // Get the singleton instance of the database connection
     }
     
+    /**
+     * Checks if a student exists in the database by their email.
+     * @param email The email to check
+     * @return True if the student exists, false otherwise.
+     */
     @Override
-    public boolean studentExistsByEmail(String email)
+    public boolean doesStudentExistByEmail(String email)
     {
         String query = "SELECT COUNT(*) FROM students WHERE email = ?";
         
@@ -30,12 +37,18 @@ public class StudentsDAO implements StudentRepository
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error checking whether student exists by email: " + e);
         }
         return false;
     }
+    
+    /**
+     * Checks if a student exists in the database by their student ID.
+     * @param studentId The student ID to check.
+     * @return True if the student exists, false otherwise.
+     */
     @Override
-    public boolean studentExistsByStudentId(int studentId)
+    public boolean doesStudentExistsByStudentId(int studentId)
     {
         String query = "SELECT COUNT(*) FROM students WHERE student_id = ?";
         
@@ -47,12 +60,17 @@ public class StudentsDAO implements StudentRepository
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error checking whether student exists by student ID: " + e);
         }
         return false;
     }
+    
+    /**
+     * Retrieves a list of all students from the database.
+     * @return A list of students.
+     */
     @Override
-    public List<Student> readStudents()
+    public List<Student> getAllStudents()
     {        
         List<Student> students = new ArrayList<>();
         
@@ -61,24 +79,21 @@ public class StudentsDAO implements StudentRepository
             ResultSet rs = st.executeQuery("SELECT * FROM students");
             
             while (rs.next())
-            {
-                Student student = new Student();  
-                
-                student.setStudentId(rs.getInt("student_id"));
-                student.setFirstName(rs.getString("first_name"));
-                student.setLastName(rs.getString("last_name"));
-                student.setEmail(rs.getString("email"));
-                
-                students.add(student);
+            {               
+                students.add(mapResultSetToStudent(rs));
             }                  
         }
         catch (SQLException e) {
-            e.printStackTrace();          
+            System.out.println("Error reading all students: " + e);          
         } 
         return students;
     }
+    /**
+     * Add student to the database.
+     * @param student The student to add.
+     */
     @Override
-    public void addToStudents(Student student)
+    public void addStudent(Student student)
     {
         String query = "INSERT INTO students (first_name, last_name, email) VALUES(?,?,?)";
         
@@ -88,42 +103,49 @@ public class StudentsDAO implements StudentRepository
             ps.setString(2, student.getLastName());
             ps.setString(3, student.getEmail());
                        
-            ps.executeUpdate();
+            int rowAffected = ps.executeUpdate();
             
-            System.out.println("Student added succesfully.");
+            if (rowAffected > 0) {
+                System.out.println("Student added succesfully.");
+            }
         }
         catch (SQLException e)
         {
-            System.err.println("Error adding book: " + e);
+            System.err.println("Error adding student: " + e);
         }
     }
- 
+    
+    /**
+     * Update existing student details in the database.
+     * @param studentId The student ID of the student to update.
+     * @param student The student object to update.
+     */
     @Override
-    public void updateStudents(int studentId, Student student)
+    public void updateStudent(int studentId, Student student)
     {        
         try
         {
             PreparedStatement ps = null;           
-            StringBuilder sql = new StringBuilder("UPDATE students SET ");
+            StringBuilder query = new StringBuilder("UPDATE students SET ");
             boolean first = true;
             
             if (student.getFirstName() != null) {
-                sql.append("first_name=?");
+                query.append("first_name=?");
                 first = false;
             }
             if (student.getLastName() != null) {
-                if (!first) sql.append(", ");
-                sql.append("last_name=?");
+                if (!first) query.append(", ");
+                query.append("last_name=?");
                 first = false;
             }
             if (student.getEmail() != null) {
-                if (!first) sql.append(", ");
-                sql.append("email=?");
+                if (!first) query.append(", ");
+                query.append("email=?");
                 first = false;
             }
             
-            sql.append(" WHERE student_id =?");            
-            ps = connection.prepareStatement(sql.toString());
+            query.append(" WHERE student_id =?");            
+            ps = connection.prepareStatement(query.toString());
             
             int row = 1;
             
@@ -147,35 +169,46 @@ public class StudentsDAO implements StudentRepository
             if (rowsUpdated > 0) {
                 System.out.println("Student updated successfully.");
             } else {
-                System.out.println("No student found with the given ID");
+                System.out.println("No student found with the given student ID");
             }
         }
         catch (SQLException e) {
-            System.err.println("Error updating student book: " + e);
+            System.err.println("Error updating student details: " + e);
         } 
     }
+    
+    /**
+     * Deletes a student from he database.
+     * @param studentID The student ID of the student to delete.
+     */
     @Override
-    public void deleteFromStudents(int userID)
+    public void deleteStudent(int studentID)
     {
         String query = "DELETE FROM students WHERE student_id = ?";
                 
         try (PreparedStatement ps = connection.prepareStatement(query))
         {
-            ps.setInt(1, userID);
+            ps.setInt(1, studentID);
             
             int rowsDeleted = ps.executeUpdate();
             
             if (rowsDeleted > 0){
-                System.out.println("User deleted successfully.");
+                System.out.println("Student deleted successfully.");
             }
             else {
-                System.out.println("No user found with the given ID.");
+                System.out.println("No student found with the given student ID.");
             }
         }
         catch (SQLException e){
-            e.printStackTrace();
+            System.err.println("Error deleting student: " + e);
         }
     }
+    
+    /**
+     * Searches for student(s) in the database based on keyword.
+     * @param keyword The keyword to search for.
+     * @return Student(s) matching the search criteria.
+     */
     @Override
     public List<Student> searchStudents(String keyword)
     {
@@ -191,31 +224,32 @@ public class StudentsDAO implements StudentRepository
             try (ResultSet rs = ps.executeQuery())
             {
                 while (rs.next())
-                {
-                    Student student = new Student();
-                    
-                    student.setStudentId(rs.getInt("student_id"));
-                    student.setFirstName(rs.getString("first_name"));
-                    student.setLastName(rs.getString("last_name"));
-                    student.setEmail(rs.getString("email"));
-                    
-                    searchResult.add(student);
+                {                   
+                    searchResult.add(mapResultSetToStudent(rs));
                 }
             }
             if (searchResult.isEmpty()) {
-                System.out.println("No users found matching the search criteria.");
+                System.out.println("No student(s) found matching the search criteria.");
             }
             else {
-                System.out.println("Search result:");
-                
-                for (Student user: searchResult) {
-                    System.out.println(user);
-                }
+                System.out.println("Student(s) found matching the search criteria.");
             }
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error searching student(s): " + e);
         }
         return searchResult;
-    }   
+    }
+    
+    private Student mapResultSetToStudent(ResultSet rs) throws SQLException
+    {
+        Student student = new Student();
+        
+        student.setStudentId(rs.getInt("student_id"));
+        student.setFirstName(rs.getString("first_name"));
+        student.setLastName(rs.getString("last_name"));
+        student.setEmail(rs.getString("email"));
+        
+        return student;
+    }
 }

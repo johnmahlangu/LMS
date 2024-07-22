@@ -8,14 +8,14 @@ import java.util.List;
 
 /**
  *
- * @author Thokozani Mahlangu
+ * @author Jonas Mahlangu
  */
 public interface BookRepository {
     List<Book> getAllBooks();
     String getBookStatusById(int bookId);
     List<Book> getAvailableBooks();
     void updateBookStatus(int bookId, String status);
-    public boolean doesBookExistsByISBN(String isbn);
+    boolean doesBookExistByISBN(String isbn);
     void addBook(Book book);
     void updateBooks(int bookID, Book updatedBook);
     void deleteBookById(int bookID);

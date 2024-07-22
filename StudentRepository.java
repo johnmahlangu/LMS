@@ -10,11 +10,11 @@ import java.util.*;
  */
 public interface StudentRepository 
 {   
-    List<Student> readStudents();
-    boolean studentExistsByEmail(String email);
-    boolean studentExistsByStudentId(int studentId);
-    void addToStudents(Student user);
-    void updateStudents(int userID, Student updateUser);
-    void deleteFromStudents(int userID);
+    List<Student> getAllStudents();
+    boolean doesStudentExistByEmail(String email);
+    boolean doesStudentExistsByStudentId(int studentId);
+    void addStudent(Student user);
+    void updateStudent(int userID, Student updateUser);
+    void deleteStudent(int userID);
     List<Student> searchStudents(String keyword);
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  *
- * @author Thokozani Mahlangu
+ * @author Jonas Mahlangu
  */
 public class StudentManager 
 {
@@ -18,41 +18,38 @@ public class StudentManager
         this.studentDAO = studentDAO;
     }
    
-    public boolean studentExistsByEmail(String email)
+    public boolean doesStudentExistByEmail(String email)
     {
-        return studentDAO.studentExistsByEmail(email);
+        return studentDAO.doesStudentExistByEmail(email);
     }
     
-    public boolean studentExistsByStudentId(int studentId)
+    public boolean doesStudentExistsByStudentId(int studentId)
     {
-        return studentDAO.studentExistsByStudentId(studentId);
+        return studentDAO.doesStudentExistsByStudentId(studentId);
     }
 
     public void addStudent(String firstName, String lastName, String email)
-    {
-        Student student = new Student(firstName, lastName, email);
-        studentDAO.addToStudents(student);    
+    {       
+        studentDAO.addStudent(new Student(firstName, lastName, email));    
     }
     
     public List<Student> displayAllStudents()
     {
-       List<Student> students = studentDAO.readStudents();
-       return students;
+       return studentDAO.getAllStudents();
     }
     
-    public void studentUpdate(int studentId, Student student)
+    public void updateStudent(int studentId, Student student)
     {
-        studentDAO.updateStudents(studentId, student);
+        studentDAO.updateStudent(studentId, student);
     }
     
     public void deleteStudent(int studentId)
     {
-        studentDAO.deleteFromStudents(studentId);
+        studentDAO.deleteStudent(studentId);
     }
     
     public List<Student> searchStudent(String keyword)
-    {
-        List<Student> searchResult = studentDAO.searchStudents(keyword);
-        return searchResult;
+    {       
+        return studentDAO.searchStudents(keyword);
     }
 }

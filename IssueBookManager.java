@@ -20,16 +20,16 @@ public class IssueBookManager
     
     public void issueBook(int bookId,int student_id, LocalDate issueDate, LocalDate returnDate)
     {
-        issueBookDAO.addToIssuedBooks(new IssueBook(bookId, student_id, issueDate, returnDate));
+        issueBookDAO.addIssuedBook(new IssueBook(bookId, student_id, issueDate, returnDate));
     }
     
     public void returnBook(int bookId, int studentId)
     {
-        issueBookDAO.deleteFromIssuedBooks(bookId, studentId);
+        issueBookDAO.deleteIssuedBook(bookId, studentId);
     }
     
     public List<IssueBook> displayIssuedBooks()
     {     
-        return issueBookDAO.readAllIssuedBooks();
+        return issueBookDAO.getAllIssuedBooks();
     }
 }

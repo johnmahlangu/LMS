@@ -5,9 +5,12 @@
 package com.servlet;
 import java.util.*;
 import java.sql.*;
+
 /**
- *
- * @author Thokozani Mahlangu
+ * DAO class for managing books.
+ * Implements BookRepository interface.
+ * Provides methods that includes performing CRUD operations and searching.
+ * @author Jonas Mahlangu
  */
 public class BooksDAO implements BookRepository
 {   
@@ -15,7 +18,7 @@ public class BooksDAO implements BookRepository
     
     public BooksDAO()
     {
-        connection = ConnectionDB.getInstance().getConnection();
+        connection = ConnectionDB.getInstance().getConnection(); // Get the singleton instance of the database connection
     }
     
     /**
@@ -24,7 +27,7 @@ public class BooksDAO implements BookRepository
      * @return true if the book exists, false otherwise.
      */
     @Override
-    public boolean doesBookExistsByISBN(String isbn)
+    public boolean doesBookExistByISBN(String isbn)
     {
         String query = "SELECT COUNT(*) FROM books WHERE ISBN = ?";
         
@@ -32,8 +35,10 @@ public class BooksDAO implements BookRepository
             ps.setString(1, isbn);
             try(ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
+                    System.out.println("ISBN already exists.");
                     return rs.getInt(1) > 0;
                 }
+                System.out.println("ISBN does not already exist.");
             }
         } catch (Exception e) {
             System.err.println("Error determining whether a book exists by ISBN: " + e);
@@ -51,7 +56,7 @@ public class BooksDAO implements BookRepository
         List<Book> books = new ArrayList<>();
         String query = "SELECT * FROM books";
         
-        try(Statement st = connection.createStatement()) 
+        try (Statement st = connection.createStatement()) 
         {             
             ResultSet  rs = st.executeQuery(query);
              
@@ -82,7 +87,11 @@ public class BooksDAO implements BookRepository
             ps.setInt(4, book.getPublicationYear());
             ps.setString(5, book.getStatus());
              
-            ps.executeUpdate();    
+            int rowsUpdated = ps.executeUpdate();  
+            
+            if (rowsUpdated > 0) {
+                System.out.println("Book added to the database.");
+            } 
         }
         catch (SQLException e) 
         {
@@ -111,8 +120,7 @@ public class BooksDAO implements BookRepository
                 if (!first) sql.append(", ");
                 sql.append("author=?");
                 first = false;
-            }
-            
+            }            
             if (book.getPublicationYear() != 0) {
                 if (!first) sql.append(", ");
                 sql.append("publication_year=?");
@@ -121,11 +129,9 @@ public class BooksDAO implements BookRepository
             if (book.getISBN() != null) {
                 if (!first) sql.append(", ");
                 sql.append("ISBN=?");
-            }      
-            
+            }                 
             sql.append(" WHERE book_id=?");           
-            ps = connection.prepareStatement(sql.toString());
-            
+            ps = connection.prepareStatement(sql.toString());            
             int row = 1;
             
             if (book.getTitle() != null) {
@@ -133,26 +139,25 @@ public class BooksDAO implements BookRepository
             }
             if (book.getAuthor() != null) {
                 ps.setString(row++, book.getAuthor());          
-            }
-                  
+            }               
             if (book.getPublicationYear() != 0) {
                 ps.setInt(row++, book.getPublicationYear());
             }
             if (book.getISBN() != null) {
                 ps.setString(row++, book.getISBN());
-            }
+            }           
+            ps.setInt(row, bookId);           
+            int updatedRows = ps.executeUpdate();
             
-            ps.setInt(row, bookId);
-            
-            int rowsUpdated = ps.executeUpdate();
-
-            if (rowsUpdated > 0) {
+            if (updatedRows > 0) {
                 System.out.println("Book updated successfully.");
-            } else {
-                System.out.println("No book found with the given ID.");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            else {
+                System.out.println("No Book found with the given book ID.");
+            }          
+        } 
+        catch (SQLException e) {
+            System.err.println("Error updating book: " + e);
         }
     }
     
@@ -169,7 +174,15 @@ public class BooksDAO implements BookRepository
         try(PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setString(1, status);
             ps.setInt(2, bookId);
-            ps.executeUpdate();
+            
+            int updatedRow = ps.executeUpdate();
+            
+            if (updatedRow > 0) {
+                System.out.println("Book status updated successfully.");
+            }
+            else {
+                System.out.println("No book found with the given book ID.");
+            }
         }
         catch (SQLException e) {
             System.err.println("Error updating book status: " + e);
@@ -193,8 +206,7 @@ public class BooksDAO implements BookRepository
             
             if (rs.next()) {
                 status = rs.getString("status");
-            }
-            System.out.println("Book status is: " + status);
+            }           
         } catch (SQLException e) {
             System.err.println("Error getting book status: " + e);
         }
@@ -217,7 +229,7 @@ public class BooksDAO implements BookRepository
                 books.add(mapResultSetToBook(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error getting books: " + e);
         }
         return books;
     }
@@ -234,7 +246,14 @@ public class BooksDAO implements BookRepository
         {
             ps.setInt(1, bookId);
 
-            ps.executeUpdate();
+            int deletedRow = ps.executeUpdate();
+            
+            if (deletedRow > 0) {
+                System.out.println("Book deleted successfully.");
+            }
+            else {
+                System.out.println("No Book found with the given book ID.");
+            }
         } 
         catch (SQLException e)         
         {
@@ -264,10 +283,15 @@ public class BooksDAO implements BookRepository
                 {
                     searchResult.add(mapResultSetToBook(rs));
                 }
-            }       
+            }
+            if (searchResult.isEmpty()) {
+               System.out.println("No students found matching the search criteria.");
+            } else {
+               System.out.println("Book(s) with the search criteria found.");
+            }
         }
         catch (SQLException e) {
-                System.out.println("Error searching for books: " + e);
+                System.err.println("Error searching for books: " + e);
         }
         return searchResult;
     }
@@ -277,6 +301,7 @@ public class BooksDAO implements BookRepository
      * @return A book object.
      * @throws SQLException if a SQL error occurs
      */
+    
     private Book mapResultSetToBook(ResultSet rs) throws SQLException
     {
         Book book = new Book();
