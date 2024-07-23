@@ -3,17 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/home.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/StudentManager.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/BookManager.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/IssueBookManager.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/IssueBook.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/BookRepository.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/ConnectionDB.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/IssueBookDAO.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/BooksDAO.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/Book.java</file>
-            <file>file:/C:/Users/Jonas/Documents/Library%20Management%20System/src/com/servlet/StudentsDAO.java</file>
+            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/setup.sql</file>
+            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/.env.example</file>
+            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/src/com/servlet/home.java</file>
+            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/.env</file>
+            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/src/com/servlet/ConnectionDB.java</file>
         </group>
     </open-files>
 </project-private>
