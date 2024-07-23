@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * DAO class for managing students.
  * Implements StudentRepository interface.
- * Provides methods for performing CRUD operations on books, searching for books etc.
+ * Provides methods for performing CRUD operations on books, searching for books etc..
  * @author Jonas Mahlangu
  */
 public class StudentsDAO implements StudentRepository

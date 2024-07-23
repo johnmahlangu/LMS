@@ -6,8 +6,8 @@ package com.servlet;
 
 import java.sql.*;
 /**
- *  Connection class for connecting with the database.
- * @author Jonas Mahlangu
+ *
+ * @author Thokozani Mahlangu
  */
 public class ConnectionDB 
 {

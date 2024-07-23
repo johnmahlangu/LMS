@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Book service class for managing books.
- * @author Jonas Mahlangu
+ * @author Thokozani Mahlangu
  */
 public class BookManager 
 {

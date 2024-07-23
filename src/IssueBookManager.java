@@ -7,8 +7,8 @@ package com.servlet;
 import java.time.LocalDate;
 import java.util.List;
 /**
- * Issue book service class for managing the issuing of books.
- * @author Jonas Mahlangu
+ *
+ * @author Thokozani Mahlangu
  */
 public class IssueBookManager 
 {

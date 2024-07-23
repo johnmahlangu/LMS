@@ -7,7 +7,7 @@ package com.servlet;
 import java.util.List;
 
 /**
- *  Student service class for managing students.
+ *
  * @author Jonas Mahlangu
  */
 public class StudentManager 

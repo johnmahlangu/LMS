@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Jonas Mahlangu
+ * @author Thokozani Mahlangu
  */
 public class home extends javax.swing.JFrame 
 {
