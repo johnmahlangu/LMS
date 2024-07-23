@@ -13,13 +13,13 @@ public class ConnectionDB
 {
     private static ConnectionDB instance;
     private Connection connection;
-    private String url = "jdbc:mysql://localhost:3306/LMS";
+    private String url = "jdbc:mysql://localhost:3306/lms";
     private String username = "root";
     private String password = "Jt@0843553435";
             
     private ConnectionDB()
     {
-        try{
+        try{           
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(url, username, password);          
         } 
