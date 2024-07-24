@@ -5,27 +5,43 @@
 package com.servlet;
 
 import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 /**
  *
  * @author Thokozani Mahlangu
  */
 public class ConnectionDB 
 {
+    private static final String CONFIG_FILE = "db_config.properties";
     private static ConnectionDB instance;
     private Connection connection;
-    private String url = "jdbc:mysql://localhost:3306/lms";
-    private String username = "root";
-    private String password = "Jt@0843553435";
+    private String url;
+    private String username;
+    private String password;
             
     private ConnectionDB()
     {
+        Properties properties = new Properties();
+        
+        try (FileInputStream input = new FileInputStream(CONFIG_FILE)) {
+            properties.load(input);
+        } catch (IOException e) {
+            System.err.println("Error getting confuguration file: " + e);
+        }
+        
+        url = properties.getProperty("db.url");
+        username = properties.getProperty("db.username");
+        password = properties.getProperty("db.password");
+        
         try{           
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(url, username, password);          
         } 
         catch(SQLException | ClassNotFoundException ex)
         {
-            ex.printStackTrace();
+            System.err.println("Error connecting to the database: " + ex);
         }
     }
     
@@ -50,7 +66,7 @@ public class ConnectionDB
                 connection.close();
             }
             catch (SQLException ex) {
-                ex.printStackTrace();
+                System.err.println("Error closing connection: " + ex);
             }
         }   
     }
