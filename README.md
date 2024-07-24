@@ -15,8 +15,8 @@ This is a Library Management System (LMS) project developed in Java using Swing 
 - Delete student.
 - Search for students.
 - View all students.
-- View books that can be issued.
-- Search for books that can be issued.
+- View books that can be issued(available books).
+- Search for books that can be issued(available books).
 - Issue books to students.
 - Return books.
 - View issued books.
