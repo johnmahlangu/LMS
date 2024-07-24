@@ -1248,7 +1248,8 @@ public class home extends javax.swing.JFrame
             }
             
             bookMan.addNewBook(newBook.getAuthor(), newBook.getTitle(), newBook.getStatus(), newBook.getPublicationYear(), newBook.getISBN());            
-            loadBooksTableBooks();          
+            loadBooksTableBooks(); 
+            loadBooksTableIssueBooks();
             clearBookDetails();            
             JOptionPane.showMessageDialog(this, "Book added successfully.");
         } catch (Exception e) {
@@ -1386,14 +1387,12 @@ public class home extends javax.swing.JFrame
         try {
             List<Book> books = bookMan.displayAvailableBooks();
             
-            tableIssueBookModel.setRowCount(0);
-            
-            
+            tableIssueBookModel.setRowCount(0);           
             for (Book book : books) {
                 tableIssueBookModel.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getPublicationYear(), book.getISBN()});
+            }           
             }
-            
-            } catch (Exception e) {
+            catch (Exception e) {
                 e.printStackTrace();        
         }   
     }
@@ -1403,9 +1402,7 @@ public class home extends javax.swing.JFrame
         try {
             List<Book> books = bookMan.displayAllBooks();
             
-            tableBookModel.setRowCount(0);
-            
-            
+            tableBookModel.setRowCount(0);                       
             for (Book book : books) {
                 tableBookModel.addRow(new Object[]{book.getBookId(), book.getTitle(), book.getAuthor(), book.getPublicationYear(), book.getISBN(), book.getStatus()});
             }
