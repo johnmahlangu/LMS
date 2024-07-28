@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/setup.sql</file>
-            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/.env.example</file>
-            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/src/com/servlet/home.java</file>
-            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/.env</file>
-            <file>file:/C:/Users/Jonas/Desktop/Projects/Library%20Management%20System/src/com/servlet/ConnectionDB.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
